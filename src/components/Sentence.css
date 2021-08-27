@@ -1,0 +1,11 @@
+.correct {
+    background-color: palegreen;
+}
+
+.current {
+    background-color: moccasin;
+}
+
+.incorrect {
+    background-color: lightpink;
+}
