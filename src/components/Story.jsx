@@ -8,9 +8,10 @@ function Story({ currentStory }) {
     const [currentIndex, setCurrenctIndex] = useState(0);
     const [canNextSentence, setCanNextSentence] = useState(false);
 
-    // Reset currentIndex if currentStory is updated.
+    // Reset currentIndex & canNextSentence if currentStory is updated.
     useEffect(() => {
         setCurrenctIndex(0);
+        setCanNextSentence(false);
     }, [currentStory]);
 
     const handleNextSentence = () => {
