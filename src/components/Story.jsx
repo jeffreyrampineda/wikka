@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Sentence from './Sentence';
 
 /**
@@ -7,6 +7,11 @@ import Sentence from './Sentence';
 function Story({ currentStory }) {
     const [currentIndex, setCurrenctIndex] = useState(0);
     const [canNextSentence, setCanNextSentence] = useState(false);
+
+    // Reset currentIndex if currentStory is updated.
+    useEffect(() => {
+        setCurrenctIndex(0);
+    }, [currentStory]);
 
     const handleNextSentence = () => {
         if (currentIndex + 1 < currentStory.length) {
