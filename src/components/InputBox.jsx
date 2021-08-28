@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { HIRAGANA } from '../helpers/characterMappings';
+import { HIRAGANA_ROMAJI } from '../helpers/characterMappings';
 
 /**
  * @param {char} currentChar 
@@ -14,13 +14,14 @@ function InputBox({ currentChar, nextChar }) {
     }, [currentChar]);
 
     /**
-     * Attempt to translate (input) into a hiragana character.
+     * Attempt to translate (input) into a romaji character.
      * @param {string} input 
      * @returns translatedChar | undefined
      */
     const translate = (input) => {
-        if (input.length <= 3) {
-            const translatedChar = HIRAGANA[input];
+        // Hiragana characters can be digraphs: "きゃ" -> "kya"
+        if (input.length <= 2) {
+            const translatedChar = HIRAGANA_ROMAJI[input];
 
             return translatedChar;
         }
@@ -35,7 +36,7 @@ function InputBox({ currentChar, nextChar }) {
         setUserInput(value);
 
         // Compare currentChar with translated input.
-        if (currentChar && translate(value) === currentChar) {
+        if (currentChar && translate(currentChar) === value) {
             setUserInput('');
             nextChar();
         }
