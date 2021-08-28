@@ -11,39 +11,41 @@ function FormContainer({ sentences }) {
     const [currentIndexSentence, setCurrenctIndexSentence] = useState(0);
     const [currentIndexChar, setCurrenctIndexChar] = useState(0);
     const [canNextSentence, setCanNextSentence] = useState(false);
-
-    // Inefficient?
-    const chars = sentences[currentIndexSentence].split('');
+    const [chars, setChars] = useState(sentences[0].split(''));
 
     // Reset currentIndexSentence, currentIndexChar, & canNextSentence if sentences is updated.
     useEffect(() => {
         setCurrenctIndexSentence(0);
+        setChars(sentences[0].split(''));
         setCurrenctIndexChar(0);
         setCanNextSentence(false);
     }, [sentences]);
 
     // Updates which sentence sentences is on, resets currentIndexChar & canNextSentence.
     const handleNextSentence = () => {
-        if (currentIndexSentence + 1 < sentences.length) {
-            setCurrenctIndexSentence(currentIndexSentence + 1);
+        const _nextIndexSentence = currentIndexSentence + 1;
+
+        if (_nextIndexSentence < sentences.length) {
+            setCurrenctIndexSentence(_nextIndexSentence);
+            setChars(sentences[_nextIndexSentence].split(''));
             setCurrenctIndexChar(0);
             setCanNextSentence(false);
         }
     }
 
     const handleNextChar = () => {
-        let nextIndex = currentIndexChar + 1;
+        let _nextIndexChar = currentIndexChar + 1;
 
         // Ignore punctionations.
-        while (nextIndex < chars.length && punctionations.includes(chars[nextIndex])) {
-            nextIndex++;
+        while (_nextIndexChar < chars.length && punctionations.includes(chars[_nextIndexChar])) {
+            _nextIndexChar++;
         }
 
         // Check if the sentence is complete.
-        if (nextIndex >= chars.length) {
+        if (_nextIndexChar >= chars.length) {
             setCanNextSentence(true);
         }
-        setCurrenctIndexChar(nextIndex);
+        setCurrenctIndexChar(_nextIndexChar);
     }
 
     return (
