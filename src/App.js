@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import { stories } from './helpers/stories';
 import StoriesList from './components/StoriesList';
-import Story from './components/Story';
+import FormContainer from './components/FormContainer';
 
 function App() {
   const [selectedStory, setSelectedStory] = useState(undefined);
@@ -15,7 +15,7 @@ function App() {
     <>
       <h1>Hiragana Practice</h1>
       <StoriesList stories={stories} selectStory={handleSelectStory}></StoriesList>
-      {selectedStory !== undefined && <Story currentStory={selectedStory.story}></Story>}
+      {selectedStory !== undefined && <FormContainer sentences={selectedStory.sentences}></FormContainer>}
     </>
   );
 }

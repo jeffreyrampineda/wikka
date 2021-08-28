@@ -13,9 +13,9 @@ const princessKaguya = [
 export const stories = [{
     "id": 0,  
     "title": "The Test",
-    "story": theTest
+    "sentences": theTest
 }, {
     "id": 1,  
     "title": "Princess Kaguya",
-    "story": princessKaguya
+    "sentences": princessKaguya
 }];

@@ -5,26 +5,26 @@ import InputBox from './InputBox';
 const punctionations = [' ', '、', '。', '「', '」'];
 
 /**
- * @param {Array<string>} currentStory 
+ * @param {Array<string>} sentences
  */
-function Story({ currentStory }) {
+function FormContainer({ sentences }) {
     const [currentIndexSentence, setCurrenctIndexSentence] = useState(0);
     const [currentIndexChar, setCurrenctIndexChar] = useState(0);
     const [canNextSentence, setCanNextSentence] = useState(false);
 
     // Inefficient?
-    const chars = currentStory[currentIndexSentence].split('');
+    const chars = sentences[currentIndexSentence].split('');
 
-    // Reset currentIndexSentence, currentIndexChar, & canNextSentence if currentStory is updated.
+    // Reset currentIndexSentence, currentIndexChar, & canNextSentence if sentences is updated.
     useEffect(() => {
         setCurrenctIndexSentence(0);
         setCurrenctIndexChar(0);
         setCanNextSentence(false);
-    }, [currentStory]);
+    }, [sentences]);
 
-    // Updates which sentence currentStory is on, resets currentIndexChar & canNextSentence.
+    // Updates which sentence sentences is on, resets currentIndexChar & canNextSentence.
     const handleNextSentence = () => {
-        if (currentIndexSentence + 1 < currentStory.length) {
+        if (currentIndexSentence + 1 < sentences.length) {
             setCurrenctIndexSentence(currentIndexSentence + 1);
             setCurrenctIndexChar(0);
             setCanNextSentence(false);
@@ -48,12 +48,12 @@ function Story({ currentStory }) {
 
     return (
         <>
-            <p>Sentence: {currentIndexSentence + 1}/{currentStory.length}</p>
+            <p>Sentence: {currentIndexSentence + 1}/{sentences.length}</p>
             <Sentence currentChars={chars} currentIndexChar={currentIndexChar}></Sentence>
             <InputBox currentChar={chars[currentIndexChar]} nextChar={handleNextChar}></InputBox>
-            {canNextSentence && currentIndexSentence + 1 < currentStory.length && <button onClick={handleNextSentence}>Next</button>}
+            {canNextSentence && currentIndexSentence + 1 < sentences.length && <button onClick={handleNextSentence}>Next</button>}
         </>
     );
 }
 
-export default Story;
+export default FormContainer;
