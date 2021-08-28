@@ -19,7 +19,7 @@ function Sentence({ currentChars, currentIndexChar }) {
     }, [currentChars]);
 
     return (
-        <p>
+        <p className="sentence">
             {memoizedChars.map((mc, i) =>
                 <Tooltip key={i} message={mc.translation}>
                     <span className={`${i < currentIndexChar ? 'correct' : i === currentIndexChar ? 'current' : 'incorrect'}`}>{mc.chararacter}</span>

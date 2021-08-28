@@ -5,7 +5,7 @@ function Tooltip({ children, message }) {
     return (
         <span className="tooltip">
             {children}
-            <span className="tooltipmessage">{message}</span>
+            {message && <span className="tooltipmessage">{message}</span>}
         </span>
     );
 }

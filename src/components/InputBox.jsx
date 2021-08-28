@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './InputBox.css';
 import translate from '../helpers/translator';
 
 /**
@@ -28,10 +29,14 @@ function InputBox({ currentChar, nextChar }) {
     }
 
     return (
-        <label>
-            Type:
-            <input type="text" value={userInput} onChange={handleOnChange} />
-        </label>
+        <textarea
+            id="userInput"
+            rows="3"
+            cols="30"
+            placeholder="Type in Romaji"
+            value={userInput}
+            onChange={handleOnChange}
+        />
     );
 }
 
