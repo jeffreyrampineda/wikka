@@ -1,5 +1,7 @@
 import React from 'react';
 import './Sentence.css';
+import Tooltip from './Tooltip';
+import translate from '../helpers/translator';
 
 /**
  * @param {Array<char>} currentChars
@@ -9,7 +11,9 @@ function Sentence({ currentChars, currentIndexChar }) {
     return (
         <p>
             {currentChars.map((char, i) =>
-                <span key={i} className={`${i < currentIndexChar ? 'correct' : i === currentIndexChar ? 'current' : 'incorrect'}`}>{char}</span>
+                <Tooltip key={i} message={translate(char)}>
+                    <span className={`${i < currentIndexChar ? 'correct' : i === currentIndexChar ? 'current' : 'incorrect'}`}>{char}</span>
+                </Tooltip>
             )}
         </p>
     );
