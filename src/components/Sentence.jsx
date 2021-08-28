@@ -1,45 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import InputBox from './InputBox';
+import React from 'react';
 import './Sentence.css';
 
 /**
- * @param {string} currentSentence 
- * @param {function} completeSentence 
+ * @param {Array<char>} currentChars
+ * @param {number} currentIndexChar
  */
-function Sentence({ currentSentence, completeSentence }) {
-    const [currentIndex, setCurrenctIndex] = useState(0);
-    const punctionations = [' ', '、', '。', '「', '」'];
-    const chars = currentSentence.split('');
-
-    // Reset currentIndex if currentSentence is updated.
-    useEffect(() => {
-        setCurrenctIndex(0);
-    }, [currentSentence]);
-
-    const handleNextChar = () => {
-        let nextIndex = currentIndex + 1;
-
-        // Ignore punctionations.
-        while (nextIndex < chars.length && punctionations.includes(chars[nextIndex])) {
-            nextIndex++;
-        }
-
-        // Check if the sentence is complete.
-        if (nextIndex >= chars.length) {
-            completeSentence();
-        }
-        setCurrenctIndex(nextIndex);
-    }
-
+function Sentence({ currentChars, currentIndexChar }) {
     return (
-        <>
-            <p>
-                {chars.map((char, i) =>
-                    <span key={i} className={`${i < currentIndex ? 'correct' : i  === currentIndex ? 'current' : 'incorrect'}`}>{char}</span>
-                )}
-            </p>
-            <InputBox currentChar={chars[currentIndex]} nextChar={handleNextChar}></InputBox>
-        </>
+        <p>
+            {currentChars.map((char, i) =>
+                <span key={i} className={`${i < currentIndexChar ? 'correct' : i === currentIndexChar ? 'current' : 'incorrect'}`}>{char}</span>
+            )}
+        </p>
     );
 }
 
