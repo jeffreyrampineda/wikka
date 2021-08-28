@@ -20,17 +20,8 @@ function InputBox({ currentChar, nextChar }) {
      */
     const translate = (input) => {
         if (input.length <= 3) {
-            let translatedChar = HIRAGANA[input[0]];
+            const translatedChar = HIRAGANA[input];
 
-            // Checks for 'single N'.
-            if (input[0] === 'n' && /^n$/.test(input)) {
-                translatedChar = HIRAGANA['single_n'];
-            }
-
-            // If input is not a vowel.
-            if (typeof translatedChar === 'object') {
-                translatedChar = translatedChar[input.substring(1)];
-            }
             return translatedChar;
         }
         return undefined;
