@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-function StoriesList({ stories, selectStory }) {
+/**
+ * @param {Array<Story>} stories
+ * @param {function} fetchStories
+ */
+function StoriesList({ stories, fetchStories }) {
+    useEffect(() => {
+        fetchStories();
+    }, []);
+
     return (
         <ul>
             {stories.map((story) =>
-                <li key={story.id} onClick={() => selectStory(story.id)}>{story.title}</li>
+                <Link key={story.id} to={`/stories/${story.id}`}>{story.title}</Link>
             )}
         </ul>
     );
