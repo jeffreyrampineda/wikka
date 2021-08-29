@@ -1,28 +1,17 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import './Sentence.css';
 import Tooltip from './Tooltip';
-import translate from '../helpers/translator';
 
 /**
- * @param {Array<char>} currentChars
+ * @param {Array<char>} sentence
  * @param {number} currentIndexChar
  */
-function Sentence({ currentChars, currentIndexChar }) {
-    // Prevents re-translation if currentIndexChar triggers a re-render.
-    const memoizedChars = useMemo(() => {
-        return currentChars.map((char) => {
-            return {
-                chararacter: char,
-                translation: translate(char)
-            }
-        });
-    }, [currentChars]);
-
+function Sentence({ sentence, currentIndexChar }) {
     return (
         <p className="sentence">
-            {memoizedChars.map((mc, i) =>
+            {sentence.map((mc, i) =>
                 <Tooltip key={i} message={mc.translation}>
-                    <span className={`${i < currentIndexChar ? 'correct' : i === currentIndexChar ? 'current' : 'incorrect'}`}>{mc.chararacter}</span>
+                    <span className={`${i < currentIndexChar ? 'correct' : i === currentIndexChar ? 'current' : 'incorrect'}`}>{mc.character}</span>
                 </Tooltip>
             )}
         </p>

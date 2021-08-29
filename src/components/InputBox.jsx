@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import './InputBox.css';
-import translate from '../helpers/translator';
 
 /**
- * @param {char} currentChar 
+ * @param {char} translation 
  * @param {function} nextChar 
  */
-function InputBox({ currentChar, nextChar }) {
+function InputBox({ translation, nextChar }) {
     const [userInput, setUserInput] = useState('');
 
-    // Reset userInput if currentChar is updated.
+    // Reset userInput if translation is updated.
     useEffect(() => {
         setUserInput('');
-    }, [currentChar]);
+    }, [translation]);
 
     const handleOnChange = (e) => {
         e.preventDefault();
@@ -21,8 +20,8 @@ function InputBox({ currentChar, nextChar }) {
 
         setUserInput(value);
 
-        // Compare currentChar with translated input.
-        if (currentChar && translate(currentChar) === value) {
+        // Compare translation with user input.
+        if (translation && translation === value) {
             setUserInput('');
             nextChar();
         }
