@@ -1,5 +1,7 @@
 {
-  "name": "hiragana-practice",
+  "name": "wikka",
+  "description": "Web application that assists with practicing different languages.",
+  "author": "Jeffrey Ram Pineda <jeffreyrampineda@gmail.com> (https://jeffreyram.pineda.org/)",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
