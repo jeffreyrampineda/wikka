@@ -1,18 +1,49 @@
 import { HIRAGANA_ROMAJI } from '../helpers/characterMappings';
 
-/**
- * Attempt to translate (input) into romaji character(s).
- * @param {string} input 
- * @returns translated chararacter(s) | undefined
- */
-export function translate(input) {
-    // Hiragana characters can be digraphs: "きゃ" -> "kya"
-    if (input.length <= 2) {
-        const translatedChar = HIRAGANA_ROMAJI[input];
+// Used for Hiragana digraphs: "きゃ" -> "kya".
+const SOKUON = {'ゃ': true, 'ゅ': true, 'ょ': true };
 
-        return translatedChar;
+// Used for double consonant: "っと" -> "tto".
+const SOKUON_TSU = 'っ';
+
+/**
+ * A sokuon is for digraphs. This function preprocesses by checking 
+ * for sokuon rules. Sokuon 'tsu' relies on the nextChar to 
+ * calculate its double consonant: "っと" -> "tto", "っく" -> "kku".
+ * 
+ * Regular sokuon combines with the nextChar: "きゃ" -> "kya".
+ * 
+ * @param {string} char 
+ * @param {string} nextChar 
+ * @returns result { input<string>, isSokuonTsu<bool>, isSokuonReg<bool> }
+ */
+function checkSokuon(char, nextChar) {
+    const result = {
+        isSokuonTsu: char === SOKUON_TSU,
+        isSokuonReg: SOKUON[nextChar]
     }
-    return undefined;
+    result.input = result.isSokuonTsu ? nextChar : char;
+    return result;
+}
+
+/**
+ * Attempt to translate non-romaji into romaji character(s).
+ * @param {string} char 
+ * @param {string} nextChar 
+ * @returns translated chararacter(s)<string> | undefined
+ */
+export function translate(char, nextChar) {
+    const { input, isSokuonTsu, isSokuonReg } = checkSokuon(char, nextChar);
+    const translatedCharacter = HIRAGANA_ROMAJI[input];
+
+    if (isSokuonTsu) {
+        return translatedCharacter[0];
+    }
+    if (isSokuonReg) {
+        return translatedCharacter.slice(0, -1);
+    }
+    // Regular character
+    return translatedCharacter; 
 }
 
 /**
@@ -22,10 +53,10 @@ export function translate(input) {
  * @returns Array<{character, translation}>
  */
 export function generateTranslation(sentence) {
-    return sentence.split('').map((char) => {
+    return sentence.split('').map((char, i) => {
         return {
             character: char,
-            translation: translate(char),
+            translation: translate(char, sentence[i + 1]),
         }
     });
 }
