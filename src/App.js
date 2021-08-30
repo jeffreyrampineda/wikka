@@ -45,6 +45,8 @@ function App() {
   return (
     <Router>
       <div>
+        <h1>Wikka</h1>
+        <h2>Practice your Japanese!</h2>
         <Switch>
           <Route exact path="/" render={() => 
             <StoriesList 

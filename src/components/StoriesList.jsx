@@ -11,11 +11,17 @@ function StoriesList({ stories, fetchStories }) {
     }, []);
 
     return (
-        <ul>
+        <article>
+            <h3>Pick one of the stories to read</h3>
             {stories.map((story) =>
-                <Link key={story.id} to={`/stories/${story.id}`}>{story.title}</Link>
+                <article key={story.id}>
+                    <h4>{story.title}</h4>
+                    <small>By {story.author}</small>
+                    <p>{story.description}</p>
+                    <Link to={`/stories/${story.id}`}><button>Read This</button></Link>
+                </article>
             )}
-        </ul>
+        </article>
     );
 }
 
