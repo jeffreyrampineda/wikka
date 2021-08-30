@@ -3,8 +3,6 @@ import Sentence from './Sentence';
 import InputBox from './InputBox';
 import { generateTranslation } from '../helpers/translator';
 
-const punctionations = [' ', '、', '。', '「', '」'];
-
 /**
  * @param {Array<string>} sentences
  */
@@ -14,32 +12,31 @@ function FormContainer({ sentences }) {
     const [canNextSentence, setCanNextSentence] = useState(false);
     const [sentence, setSentence] = useState(() => generateTranslation(sentences[0]));
 
-    // Reset currentIndexSentence, currentIndexChar, & canNextSentence if sentences is updated.
     useEffect(() => {
-        setCurrenctIndexSentence(0);
-        setCurrenctIndexChar(0);
-        setCanNextSentence(false);
-        setSentence(generateTranslation(sentences[0]));
-    }, [sentences]);
+        handleNextChar(0);
+    }, [sentence]);
 
-    // Updates which sentence is currently active, resets currentIndexChar & canNextSentence.
+    // Updates which sentence is currently active & resets canNextSentence.
     const handleNextSentence = () => {
         const _nextIndexSentence = currentIndexSentence + 1;
 
         if (_nextIndexSentence < sentences.length) {
             setCurrenctIndexSentence(_nextIndexSentence);
-            setCurrenctIndexChar(0);
             setCanNextSentence(false);
             setSentence(generateTranslation(sentences[_nextIndexSentence]));
         }
     }
 
-    // Updates which character is currently active.
-    const handleNextChar = () => {
-        let _nextIndexChar = currentIndexChar + 1;
+    /**
+     * Updates which character is currently active. Default is the next
+     * translatable character.
+     * @param {number} nextIdx 
+     */
+    const handleNextChar = (nextIdx = currentIndexChar + 1) => {
+        let _nextIndexChar = nextIdx;
 
-        // Ignore punctionations.
-        while (_nextIndexChar < sentence.length && punctionations.includes(sentence[_nextIndexChar].character)) {
+        // Ignore undefined translations.
+        while (_nextIndexChar < sentence.length && sentence[_nextIndexChar].translation === undefined) {
             _nextIndexChar++;
         }
 
