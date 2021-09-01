@@ -1,7 +1,8 @@
 .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black;
+    padding-bottom: 4px;
+    border-bottom: 2px dotted grey;
   }
   
 .tooltip .tooltipmessage {

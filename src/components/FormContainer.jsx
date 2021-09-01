@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Sentence from './Sentence';
 import InputBox from './InputBox';
+import Button from './Button';
 import { generateTranslation } from '../helpers/translator';
+
+const hrStyle = {
+    'opacity': '0.2',
+    'margin': '25px 0px'
+};
 
 /**
  * @param {Array<string>} sentences
@@ -49,10 +55,11 @@ function FormContainer({ sentences }) {
 
     return (
         <>
-            <p>Sentence: {currentIndexSentence + 1}/{sentences.length}</p>
+            <p>Page: {currentIndexSentence + 1}/{sentences.length}</p>
             <Sentence sentence={sentence} currentIndexChar={currentIndexChar}></Sentence>
             <InputBox translation={sentence[currentIndexChar]?.translation} nextChar={handleNextChar}></InputBox>
-            {canNextSentence && currentIndexSentence + 1 < sentences.length && <button onClick={handleNextSentence}>Next</button>}
+            <hr style={hrStyle} />
+            <Button disabled={!canNextSentence || !(currentIndexSentence + 1 < sentences.length)} onClick={handleNextSentence}>Next</Button>
         </>
     );
 }

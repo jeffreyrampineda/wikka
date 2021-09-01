@@ -9,11 +9,21 @@ import Tooltip from './Tooltip';
 function Sentence({ sentence, currentIndexChar }) {
     return (
         <p className="sentence">
-            {sentence.map((mc, i) =>
-                <Tooltip key={i} message={mc.translation}>
-                    <span className={`${i < currentIndexChar ? 'correct' : i === currentIndexChar ? 'current' : 'incorrect'}`}>{mc.character}</span>
-                </Tooltip>
-            )}
+            {sentence.map((mc, i) => {
+                if (mc.translation) {
+                    return (
+                        <Tooltip key={i} message={mc.translation}>
+                            <span className={`${i < currentIndexChar ?
+                                'correct'
+                                : i === currentIndexChar ?
+                                    'current'
+                                    : 'incorrect'
+                                }`}>{mc.character}</span>
+                        </Tooltip>
+                    );
+                }
+                return mc.character;
+            })}
         </p>
     );
 }

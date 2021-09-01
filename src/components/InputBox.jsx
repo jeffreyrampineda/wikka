@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './InputBox.css';
+
+const inputBoxStyle = {
+    'fontSize': '2em',
+    'resize': 'none',
+    'width': '100%',
+};
 
 /**
  * @param {char} translation 
@@ -29,6 +34,7 @@ function InputBox({ translation, nextChar }) {
 
     return (
         <textarea
+            style={inputBoxStyle}
             id="userInput"
             rows="3"
             cols="30"
