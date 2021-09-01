@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import './StoriesList.css';
 import './Story.css';
 import Button from './Button';
 
@@ -13,15 +14,19 @@ function StoriesList({ stories, fetchStories }) {
     }, []);
 
     return (
-        <section>
+        <section className="stories-list">
             <h3>Pick one of the stories to read</h3>
             {stories.map((story) =>
                 <article key={story.id} className="card">
                     <article className="container">
-                        <h4>{story.title}</h4>
-                        <small>By {story.author}</small>
-                        <p>{story.description}</p>
-                        <Link to={`/stories/${story.id}`}><Button>Read This</Button></Link>
+                        <div className="card-body">
+                            <h4>{story.title}</h4>
+                            <small>By {story.author}</small>
+                            <p>{story.description}</p>
+                        </div>
+                        <div className="card-actions">
+                            <Link to={`/stories/${story.id}`}><Button>Read This</Button></Link>
+                        </div>
                     </article>
                 </article>
             )}

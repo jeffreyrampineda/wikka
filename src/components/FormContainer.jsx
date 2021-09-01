@@ -4,12 +4,7 @@ import InputBox from './InputBox';
 import Button from './Button';
 import { generateTranslation } from '../helpers/translator';
 
-const hrStyle = {
-    'opacity': '0.2',
-    'margin': '25px 0px'
-};
-
-const actionsStyle = {
+const formActionsStyle = {
     'display': 'flex',
     'justifyContent': 'space-between',
 };
@@ -63,8 +58,8 @@ function FormContainer({ sentences }) {
             <p>Page: {currentIndexSentence + 1}/{sentences.length}</p>
             <Sentence sentence={sentence} currentIndexChar={currentIndexChar}></Sentence>
             <InputBox translation={sentence[currentIndexChar]?.translation} nextChar={handleNextChar}></InputBox>
-            <hr style={hrStyle} />
-            <div style={actionsStyle}>
+            <hr />
+            <div style={formActionsStyle}>
                 <Button disabled={!canNextSentence || !(currentIndexSentence + 1 < sentences.length)} onClick={handleNextSentence}>Next</Button>
             </div>
         </>

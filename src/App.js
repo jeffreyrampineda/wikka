@@ -45,22 +45,26 @@ function App() {
   return (
     <Router>
       <div>
-        <h1>Wikka</h1>
-        <h2>Practice your Japanese!</h2>
-        <Switch>
-          <Route exact path="/" render={() => 
-            <StoriesList 
-              stories={state.stories} 
-              fetchStories={fetchStories}
-            />}
-          />
-          <Route path="/stories/:id" children={
-            <Story 
-              selectedStory={state.selectedStory}
-              fetchStoryById={fetchStoryById}
-            />}
-          />
-        </Switch>
+        <header>
+          <h1>Wikka</h1>
+          <h2>Practice your Japanese!</h2>
+        </header>
+        <section className="container">
+          <Switch>
+            <Route exact path="/" render={() => 
+              <StoriesList
+                stories={state.stories}
+                fetchStories={fetchStories}
+              />}
+            />
+            <Route path="/stories/:id" children={
+              <Story
+                selectedStory={state.selectedStory}
+                fetchStoryById={fetchStoryById}
+              />}
+            />
+          </Switch>
+        </section>
       </div>
     </Router>
   );

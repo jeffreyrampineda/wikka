@@ -1,0 +1,9 @@
+.stories-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stories-list > article {
+    margin: 16px 0;
+}
