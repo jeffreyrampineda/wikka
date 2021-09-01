@@ -1,8 +1,12 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './StoriesList.css';
-import './Story.css';
-import Button from './Button';
+import Card from './common/Card';
+import Button from './common/Button';
+
+const storiesActionsStyle = {
+    'textAlign': 'center',
+}
 
 /**
  * @param {Array<Story>} stories
@@ -17,18 +21,16 @@ function StoriesList({ stories, fetchStories }) {
         <section className="stories-list">
             <h3>Pick one of the stories to read</h3>
             {stories.map((story) =>
-                <article key={story.id} className="card">
-                    <article className="container">
-                        <div className="card-body">
-                            <h4>{story.title}</h4>
-                            <small>By {story.author}</small>
-                            <p>{story.description}</p>
-                        </div>
-                        <div className="card-actions">
-                            <Link to={`/stories/${story.id}`}><Button>Read This</Button></Link>
-                        </div>
-                    </article>
-                </article>
+                <Card key={story.id}>
+                    <div className="m-bottom-1">
+                        <h4>{story.title}</h4>
+                        <small>By {story.author}</small>
+                        <p>{story.description}</p>
+                    </div>
+                    <div style={storiesActionsStyle}>
+                        <Link to={`/stories/${story.id}`}><Button>Read This</Button></Link>
+                    </div>
+                </Card>
             )}
         </section>
     );

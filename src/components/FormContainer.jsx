@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Sentence from './Sentence';
 import InputBox from './InputBox';
-import Button from './Button';
+import Button from './common/Button';
 import { generateTranslation } from '../helpers/translator';
 
 const formActionsStyle = {

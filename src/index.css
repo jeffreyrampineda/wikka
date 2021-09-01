@@ -11,9 +11,13 @@ header {
 
 hr {
   opacity: 0.2;
-  margin: 25px 0px;
+  margin: 32px 0px;
 }
 
 .container {
   padding: 32px;
+}
+
+.m-bottom-1 {
+    margin-bottom: 32px;
 }
