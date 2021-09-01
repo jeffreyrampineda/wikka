@@ -23,7 +23,6 @@ function Story({ selectedStory, fetchStoryById }) {
             <article className="container">
                 <Link to="/" className="close"></Link>
                 <h4>{selectedStory.title}</h4>
-                <br />
                 <FormContainer sentences={selectedStory.sentences}></FormContainer>
             </article>
         </article>

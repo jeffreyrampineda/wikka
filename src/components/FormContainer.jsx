@@ -9,6 +9,11 @@ const hrStyle = {
     'margin': '25px 0px'
 };
 
+const actionsStyle = {
+    'display': 'flex',
+    'justifyContent': 'space-between',
+};
+
 /**
  * @param {Array<string>} sentences
  */
@@ -59,7 +64,9 @@ function FormContainer({ sentences }) {
             <Sentence sentence={sentence} currentIndexChar={currentIndexChar}></Sentence>
             <InputBox translation={sentence[currentIndexChar]?.translation} nextChar={handleNextChar}></InputBox>
             <hr style={hrStyle} />
-            <Button disabled={!canNextSentence || !(currentIndexSentence + 1 < sentences.length)} onClick={handleNextSentence}>Next</Button>
+            <div style={actionsStyle}>
+                <Button disabled={!canNextSentence || !(currentIndexSentence + 1 < sentences.length)} onClick={handleNextSentence}>Next</Button>
+            </div>
         </>
     );
 }

@@ -1,6 +1,6 @@
 .btn {
-    background-color: #30CE88;
-    color: #F8F7F4;
+    background-color: rgba(48, 206, 136, 1);
+    color: whitesmoke;
     text-decoration: none;
     font-weight: bold;
     font-size: 1em;
@@ -8,8 +8,11 @@
     padding: 1em 4em;
     cursor: pointer;
 }
-
 .btn.btn-disabled {
     opacity: 0.5;
     cursor: unset;
+}
+.btn:hover {
+    box-shadow: 0 4px 16px 0 rgba(48, 206, 136, 0.4);
+    text-shadow: 1px 1px 4px rgba(39, 165, 108, 1);
 }
