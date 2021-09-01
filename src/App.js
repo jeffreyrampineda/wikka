@@ -8,6 +8,7 @@ import './App.css';
 import { getStories, getStoryById } from './services/story.services';
 import StoriesList from './components/StoriesList';
 import Story from './components/Story';
+import Footer from './components/Footer';
 
 const initialState = {
   stories: [],
@@ -52,10 +53,13 @@ function App() {
         <section className="container">
           <Switch>
             <Route exact path="/" render={() => 
-              <StoriesList
-                stories={state.stories}
-                fetchStories={fetchStories}
-              />}
+              <>
+                <StoriesList
+                  stories={state.stories}
+                  fetchStories={fetchStories}
+                />
+                <Footer></Footer>
+              </>}
             />
             <Route path="/stories/:id" children={
               <Story

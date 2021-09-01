@@ -28,7 +28,7 @@ function StoriesList({ stories, fetchStories }) {
                         <p>{story.description}</p>
                     </div>
                     <div style={storiesActionsStyle}>
-                        <Link to={`/stories/${story.id}`}><Button>Read This</Button></Link>
+                        <Link to={`/stories/${story.id}`}><Button color="primary">Read This</Button></Link>
                     </div>
                 </Card>
             )}

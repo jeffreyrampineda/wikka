@@ -55,12 +55,13 @@ function FormContainer({ sentences }) {
 
     return (
         <>
-            <p>Page: {currentIndexSentence + 1}/{sentences.length}</p>
             <Sentence sentence={sentence} currentIndexChar={currentIndexChar}></Sentence>
             <InputBox translation={sentence[currentIndexChar]?.translation} nextChar={handleNextChar}></InputBox>
             <hr />
             <div style={formActionsStyle}>
-                <Button disabled={!canNextSentence || !(currentIndexSentence + 1 < sentences.length)} onClick={handleNextSentence}>Next</Button>
+                <Button color="secondary" disabled={!(currentIndexSentence + 1 < sentences.length)} onClick={handleNextSentence}>Skip</Button>
+                <p>Page: {currentIndexSentence + 1}/{sentences.length}</p>
+                <Button color="primary" disabled={!canNextSentence || !(currentIndexSentence + 1 < sentences.length)} onClick={handleNextSentence}>Next</Button>
             </div>
         </>
     );
