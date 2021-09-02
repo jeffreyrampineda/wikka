@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import './Story.css';
 import Card from './common/Card';
 import FormContainer from './FormContainer';
+import Complete from './Complete';
 
 /**
  * @param {Story} selectedStory
@@ -18,7 +19,17 @@ function Story({ selectedStory, fetchStoryById }) {
     if (!selectedStory) {
         return (<p>Loading...</p>);
     }
-
+    if (false) {
+        return (
+            <Card>
+                <Complete
+                    description={selectedStory.title}
+                    pages={selectedStory.sentences.length}
+                    pagesSkipped="0"
+                ></Complete>
+            </Card>
+        );
+    }
     return (
         <Card>
             <Link to="/" className="close"></Link>
