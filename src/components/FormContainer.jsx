@@ -11,8 +11,10 @@ const formActionsStyle = {
 
 /**
  * @param {Array<string>} sentences
+ * @param {function} addSkipped
+ * @param {function} gotoComplete
  */
-function FormContainer({ sentences }) {
+function FormContainer({ sentences, addSkipped, gotoComplete }) {
     const [currentIndexSentence, setCurrenctIndexSentence] = useState(0);
     const [currentIndexChar, setCurrenctIndexChar] = useState(0);
     const [canNextSentence, setCanNextSentence] = useState(false);
@@ -21,6 +23,14 @@ function FormContainer({ sentences }) {
     useEffect(() => {
         handleNextChar(0);
     }, [sentence]);
+
+    // Returns true if currentIndexSentence is the last available sentences index.
+    const isLastSentence = () => currentIndexSentence + 1 >= sentences.length;
+
+    // Change to <Complete /> component for summary.
+    const handleOnComplete = () => {
+        gotoComplete();
+    }
 
     // Updates which sentence is currently active & resets canNextSentence.
     const handleNextSentence = () => {
@@ -31,6 +41,17 @@ function FormContainer({ sentences }) {
             setCanNextSentence(false);
             setSentence(generateTranslation(sentences[_nextIndexSentence]));
         }
+    }
+
+    // Skip to the next available sentence or complete the story.
+    const handleOnSkipped = () => {
+        // Increment skipped by 1.
+        addSkipped();
+
+        if (isLastSentence()) {
+            handleOnComplete();
+        }
+        handleNextSentence();
     }
 
     /**
@@ -59,9 +80,15 @@ function FormContainer({ sentences }) {
             <InputBox translation={sentence[currentIndexChar]?.translation} nextChar={handleNextChar}></InputBox>
             <hr />
             <div style={formActionsStyle}>
-                <Button color="secondary" disabled={!(currentIndexSentence + 1 < sentences.length)} onClick={handleNextSentence}>Skip</Button>
+                <Button color="secondary" onClick={handleOnSkipped}>Skip</Button>
                 <p>Page: {currentIndexSentence + 1}/{sentences.length}</p>
-                <Button color="primary" disabled={!canNextSentence || !(currentIndexSentence + 1 < sentences.length)} onClick={handleNextSentence}>Next</Button>
+                <Button
+                    color="primary"
+                    disabled={!canNextSentence}
+                    onClick={isLastSentence() ? handleOnComplete : handleNextSentence}
+                >
+                    {isLastSentence() ? 'Complete' : 'Next'}
+                </Button>
             </div>
         </>
     );
