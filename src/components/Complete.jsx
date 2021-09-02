@@ -16,12 +16,13 @@ function calculateGrade(grade) {
     return 'F';
 }
 
-function Complete({ description = "", pages = 0, pagesSkipped = 0 }) {
+function Complete({ description = "", pages = 0, pagesSkipped = 0, duration = 0 }) {
     const score = Math.floor((pages - pagesSkipped) / pages * 100);
     const summary = [
         { label: 'Completed', value: `${pages - pagesSkipped} / ${pages}` },
-        { label: 'Skipped', value: pagesSkipped },
-        { label: 'Grade', value: calculateGrade(score) }
+        { label: 'Skipped', value: `${pagesSkipped} pages` },
+        { label: 'Duration', value: `${duration} seconds` },
+        { label: 'Grade', value: calculateGrade(score) },
     ]
 
     return (
