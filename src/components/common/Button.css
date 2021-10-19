@@ -7,12 +7,13 @@
     border-radius: 4px;
     padding: 1em 4em;
     cursor: pointer;
+    transition: 0.3s;
 }
 .btn.primary {
     background-color: rgb(var(--primary));
 }
 .btn.primary:hover {
-    box-shadow: 0 4px 16px 0 rgba(var(--primary), 0.4);
+    box-shadow: 0 8px 16px 0 rgba(var(--primary), 0.4);
     text-shadow: 1px 1px 4px var(--primaryShadow);
 }
 
@@ -20,7 +21,7 @@
     background-color: rgb(var(--secondary));
 }
 .btn.secondary:hover {
-    box-shadow: 0 4px 16px 0 rgba(var(--secondary), 0.4);
+    box-shadow: 0 8px 16px 0 rgba(var(--secondary), 0.4);
     text-shadow: 1px 1px 4px rgb(var(--secondaryShadow));
 }
 

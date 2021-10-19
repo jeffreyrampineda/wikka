@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Complete.css';
 import Button from './common/Button';
+import tadaAudioSrc from '../assets/audio/tada.mp3';
 
 function calculateGrade(grade) {
     if (grade >= 80) {
@@ -24,6 +25,10 @@ function Complete({ description = "", pages = 0, pagesSkipped = 0, duration = 0 
         { label: 'Duration', value: `${duration} seconds` },
         { label: 'Grade', value: calculateGrade(score) },
     ]
+
+    const tadaAudio = new Audio(tadaAudioSrc);
+    tadaAudio.volume = 0.3;
+    tadaAudio.play();
 
     return (
         <section className="summary">
