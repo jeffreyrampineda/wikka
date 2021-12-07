@@ -22,7 +22,7 @@ const momotaro = [
     "まいにち やさしく いい あって でかけます。"
 ];
 
-export const stories = [{
+const stories = [{
     "id": 0, 
     "author": "Jeffrey Ram Pineda", 
     "title": "The Hiragana", 
@@ -43,7 +43,7 @@ export const stories = [{
 }];
 
 
- function getStories() {
+function getStories() {
     return stories;
 }
 

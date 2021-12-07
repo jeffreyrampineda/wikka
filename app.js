@@ -3,7 +3,8 @@ const helmet = require('helmet');
 const logger = require('morgan');
 
 // Controllers.
-const indexController = require('./controllers/index');
+const IndexController = require('./controllers/index');
+const StoriesController = require('./controllers/stories');
 
 // Create Express Application.
 const app = express();
@@ -13,6 +14,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/', indexController);
+app.use('/', IndexController);
+app.use('/api/stories', StoriesController);
 
 module.exports = app;
