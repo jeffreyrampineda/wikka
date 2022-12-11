@@ -1,8 +1,8 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const StoriesService = require('../services/stories.service');
+const StoriesService = require("../services/stories.service");
 
-router.get('/', function(req, res, next) {
+router.get("/", function (req, res, next) {
   res.send(StoriesService.getStories());
 });
 

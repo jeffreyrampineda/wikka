@@ -17,9 +17,23 @@ function StoriesList({ stories, fetchStories }) {
         fetchStories();
     }, []);
 
-    return (
-        <section className="stories-list">
-            <h3>Pick one of the stories to read</h3>
+    let storiesView = "";
+
+    if (stories === null) {
+      storiesView = (
+        <div className="text-center mt-3">
+          <p>Unable to retrieve stories list</p>
+        </div>
+      );
+    } else if (stories.length === 0) {
+      storiesView = (
+        <div className="text-center mt-3">
+          <p>No stories yet.</p>
+        </div>
+      );
+    } else {
+      storiesView = (
+        <div>
             {stories.map((story) =>
                 <Card key={story.id}>
                     <div className="m-bottom-1">
@@ -32,6 +46,14 @@ function StoriesList({ stories, fetchStories }) {
                     </div>
                 </Card>
             )}
+        </div>
+      );
+    }
+
+    return (
+        <section className="stories-list">
+            <h3>Pick one of the stories to read</h3>
+            {storiesView}
         </section>
     );
 }
