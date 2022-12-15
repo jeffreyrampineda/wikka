@@ -3,6 +3,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const app = require("./app");
+const db = require('./db');
 const debug = require('debug')('wikka:server');
 const http = require("http");
 
@@ -17,6 +18,9 @@ const server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+// Database
+db.init();
 
 // Normalize a port into a number, string, or false.
 function normalizePort(val) {
@@ -64,3 +68,5 @@ function onListening() {
   var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
   debug("Listening on " + bind);
 }
+
+module.exports = server;
