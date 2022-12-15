@@ -75,7 +75,7 @@ function FormContainer({ sentences, addSkipped, gotoComplete }) {
     }
 
     return (
-        <>
+        <React.Fragment>
             <Sentence sentence={sentence} currentIndexChar={currentIndexChar}></Sentence>
             <InputBox translation={sentence[currentIndexChar]?.translation} nextChar={handleNextChar}></InputBox>
             <hr />
@@ -90,7 +90,7 @@ function FormContainer({ sentences, addSkipped, gotoComplete }) {
                     {isLastSentence() ? 'Complete' : 'Next'}
                 </Button>
             </div>
-        </>
+        </React.Fragment>
     );
 }
 

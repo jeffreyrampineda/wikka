@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "concurrently \"npm run dev:server\" \"npm run dev:app\"",
+    "dev": "concurrently --raw \"npm run dev:server\" \"npm run dev:app\"",
     "dev:server": "DEBUG=wikka:* nodemon index.js",
     "dev:app": "cd client && npm run dev",
     "build:app": "cd client && npm run build",
@@ -24,7 +24,7 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "concurrently": "^6.3.0",
+    "concurrently": "^6.5.1",
     "nodemon": "^2.0.13"
   }
 }

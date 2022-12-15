@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import { getStories, getStoryById } from "./services/story.services";
 import StoriesList from "./components/StoriesList";
@@ -91,30 +91,29 @@ function App() {
           <h2>Practice your Japanese!</h2>
         </header>
         <section className="container">
-          <Switch>
+          <Routes>
             <Route
-              exact
-              path="/"
-              render={() => (
-                <>
+              index
+              element={
+                <React.Fragment>
                   <StoriesList
                     stories={state.stories}
                     fetchStories={fetchStories}
                   />
                   <Footer></Footer>
-                </>
-              )}
+                </React.Fragment>
+              }
             />
             <Route
               path="/stories/:id"
-              children={
+              element={
                 <Story
                   selectedStory={state.selectedStory}
                   fetchStoryById={fetchStoryById}
                 />
               }
             />
-          </Switch>
+          </Routes>
         </section>
       </div>
     </Router>
