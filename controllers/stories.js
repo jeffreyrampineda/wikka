@@ -8,4 +8,10 @@ router.get("/", async function (req, res, next) {
   res.send(result);
 });
 
+router.get("/:id", async function (req, res, next) {
+  const { id } = req.params;
+  const result = await Story.findById(id).populate("author");
+  res.send(result);
+});
+
 module.exports = router;
