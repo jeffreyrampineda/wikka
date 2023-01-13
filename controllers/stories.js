@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const StoriesService = require("../services/stories.service");
+const Story = require("../models/story");
+const Author = require("../models/author");
 
-router.get("/", function (req, res, next) {
-  res.send(StoriesService.getStories());
+router.get("/", async function (req, res, next) {
+  const result = await Story.find().populate("author", "first_name last_name");
+  res.send(result);
 });
 
 module.exports = router;

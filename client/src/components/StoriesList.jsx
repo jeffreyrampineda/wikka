@@ -38,7 +38,7 @@ function StoriesList({ stories, fetchStories }) {
                 <Card key={story.id}>
                     <div className="m-bottom-1">
                         <h4>{story.title}</h4>
-                        <small>By {story.author}</small>
+                        <small>By {story.author.name}</small>
                         <p>{story.description}</p>
                     </div>
                     <div style={storiesActionsStyle}>
