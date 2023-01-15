@@ -1,44 +1,59 @@
 #! /usr/bin/env node
 
+// Filename: populatedb.js
+// Description: This script populates some author, genre, and story to your database
+//
+// Author: Jeffrey Ram Pineda <https://jeffreyram.pineda.org/>
+
 console.log(
-  "This script populates some stories, authors, genres to your database."
+  "This script populates some author, genre, story to your database.\n"
 );
-console.log("e.g.: node populatedb mongodb://localhost:27017/wikka");
 
 // Get arguments passed on command line
 const userArgs = process.argv.slice(2);
-/*
-if (!userArgs[0].startsWith('mongodb')) {
-    console.log('ERROR: You need to specify a valid mongodb URL as the first argument');
-    return
+
+// Check arguments for valid MongoDB URI string
+if (userArgs.length == 0 || !userArgs[0].startsWith("mongodb")) {
+  console.log(
+    "You need to specify a valid mongodb URI string as the first argument\n"
+  );
+  console.log("Usage: node populatedb <uri_string>\n");
+  process.exit(0);
 }
-*/
-const Story = require("./models/story");
-const Author = require("./models/author");
-const Genre = require("./models/genre");
+
+const Story = require("../../models/story");
+const Author = require("../../models/author");
+const Genre = require("../../models/genre");
 
 const mongoose = require("mongoose");
-const mongoDB = userArgs[0];
+const uri_string = userArgs[0];
 
-mongoose.connect(mongoDB, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.set("strictQuery", false);
 
 mongoose.connection.once("open", () =>
-  console.log("mongodb: connection established")
+  console.log("MongoDB: connection established")
 );
 
 mongoose.connection.once("close", () =>
-  console.log("mongodb: connection closed.")
+  console.log("MongoDB: connection closed")
 );
+
+mongoose.connection.on("error", () => {
+  console.log("MongoDB: connection error");
+  process.exit(0);
+});
+
+mongoose.connect(uri_string, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const authors = [];
 const genres = [];
 const stories = [];
 
-async function authorCreate(first_name, family_name, d_birth, d_death) {
-  let authordetail = { first_name, family_name };
+async function authorCreate(first_name, last_name, d_birth, d_death) {
+  let authordetail = { first_name, last_name };
   if (d_birth != false) authordetail.date_of_birth = d_birth;
   if (d_death != false) authordetail.date_of_death = d_death;
 
