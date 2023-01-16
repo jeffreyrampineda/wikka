@@ -16,6 +16,9 @@ const initialState = {
 export const REQUEST_STORIES = "REQUEST_STORIES";
 export const REQUEST_STORIES_SUCCESS = "REQUEST_STORIES_SUCCESS";
 export const REQUEST_STORIES_FAILED = "REQUEST_STORIES_FAILED";
+export const REQUEST_STORY_DETAIL = "REQUEST_STORY_DETAIL";
+export const REQUEST_STORY_DETAIL_SUCCESS = "REQUEST_STORY_DETAIL_SUCCESS";
+export const REQUEST_STORY_DETAIL_FAILED = "REQUEST_STORY_DETAIL_FAILED";
 
 // ACTIONS
 function requestStories() {
@@ -43,6 +46,31 @@ function requestStoriesFailed(error) {
   };
 }
 
+function requestStoryDetail(id) {
+  console.log("DISPATCH: requestStoryDetail id: " + id);
+  return {
+    type: REQUEST_STORY_DETAIL,
+    isLoading: true,
+  };
+}
+
+function requestStoryDetailsSuccess(data) {
+  return {
+    type: REQUEST_STORY_DETAIL_SUCCESS,
+    selectedStory: data ? data : {},
+    isLoading: false,
+  };
+}
+
+function requestStoryDetailFailed(error) {
+  return {
+    type: REQUEST_STORY_DETAIL_FAILED,
+    error: error.message,
+    selectedStory: null,
+    isLoading: false,
+  };
+}
+
 function reducer(state, action) {
   switch (action.type) {
     case REQUEST_STORIES:
@@ -59,9 +87,19 @@ function reducer(state, action) {
         stories: action.stories,
         isLoading: action.isLoading,
       });
-    case "selectStory":
+    case REQUEST_STORY_DETAIL:
       return Object.assign({}, state, {
-        selectedStory: getStoryById(action.id),
+        isLoading: action.isLoading,
+      });
+    case REQUEST_STORY_DETAIL_SUCCESS:
+      return Object.assign({}, state, {
+        selectedStory: action.selectedStory,
+        isLoading: action.isLoading,
+      });
+    case REQUEST_STORY_DETAIL_FAILED:
+      return Object.assign({}, state, {
+        selectedStory: action.selectedStory,
+        isLoading: action.isLoading,
       });
     default:
       throw new Error();
@@ -80,7 +118,11 @@ function App() {
   }
 
   const fetchStoryById = (id) => {
-    dispatch({ type: "selectStory", id: id });
+    dispatch(requestStoryDetail(id));
+    return fetch(`/api/stories/${id}`)
+      .then((response) => response.json())
+      .then((data) => dispatch(requestStoryDetailsSuccess(data)))
+      .catch((error) => dispatch(requestStoryDetailFailed(error)));
   };
 
   return (

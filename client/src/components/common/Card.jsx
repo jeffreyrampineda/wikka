@@ -1,14 +1,12 @@
-import React from 'react';
-import './Card.css';
+import React from "react";
+import "./Card.css";
 
 function Card({ children }) {
-    return (
-        <article className="card">
-            <article className="container">
-                {children}
-            </article>
-        </article>
-    );
+  return (
+    <article className="card">
+      <div className="container">{children}</div>
+    </article>
+  );
 }
 
 export default Card;
