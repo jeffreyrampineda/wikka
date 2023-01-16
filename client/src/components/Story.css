@@ -1,25 +1,26 @@
 /* "X" icon" */
 .close {
-    width: 32px;
-    height: 32px;
-    opacity: 0.5;
-    display: block;
+  width: 32px;
+  height: 32px;
+  opacity: 0.5;
+  display: block;
 }
 .close:hover {
-    opacity: 1;
+  opacity: 1;
 }
 /* Creates "X" icon */
-.close:before, .close:after {
-    position: absolute;
-    left: 44px;
-    content: ' ';
-    height: 32px;
-    width: 2px;
-    background-color: grey;
+.close:before,
+.close:after {
+  position: absolute;
+  left: 44px;
+  content: " ";
+  height: 32px;
+  width: 2px;
+  background-color: grey;
 }
 .close:before {
-    transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 .close:after {
-    transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }

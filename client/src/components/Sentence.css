@@ -4,13 +4,13 @@
 }
 
 .correct {
-    background-color: palegreen;
+  background-color: palegreen;
 }
 
 .current {
-    background-color: moccasin;
+  background-color: moccasin;
 }
 
 .incorrect {
-    background-color: lightpink;
+  background-color: lightpink;
 }
