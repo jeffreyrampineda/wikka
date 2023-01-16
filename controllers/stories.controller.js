@@ -1,7 +1,5 @@
-const express = require("express");
-const router = express.Router();
-const Story = require("../models/story");
-const Author = require("../models/author");
+const Story = require("../models/story.model");
+const Author = require("../models/author.model");
 
 async function stories_list(req, res, next) {
   const result = await Story.find().populate("author", "first_name last_name");

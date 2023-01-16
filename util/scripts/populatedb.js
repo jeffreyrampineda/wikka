@@ -21,9 +21,9 @@ if (userArgs.length == 0 || !userArgs[0].startsWith("mongodb")) {
   process.exit(0);
 }
 
-const Story = require("../../models/story");
-const Author = require("../../models/author");
-const Genre = require("../../models/genre");
+const Story = require("../../models/story.model");
+const Author = require("../../models/author.model");
+const Genre = require("../../models/genre.model");
 
 const mongoose = require("mongoose");
 const uri_string = userArgs[0];

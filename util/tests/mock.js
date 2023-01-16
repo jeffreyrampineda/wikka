@@ -1,5 +1,5 @@
-const Author = require("../../models/author");
-const Story = require("../../models/story");
+const Author = require("../../models/author.model");
+const Story = require("../../models/story.model");
 
 async function mock_author_story() {
   const mock_author = await Author.create({
