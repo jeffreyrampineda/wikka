@@ -7,9 +7,9 @@ import tadaAudioSrc from "../assets/audio/tada.mp3";
 function calculateGrade(grade) {
   if (grade >= 80) {
     return "A";
-  } else if (grade >= 65) {
+  } else if (grade >= 70) {
     return "B";
-  } else if (grade >= 55) {
+  } else if (grade >= 60) {
     return "C";
   } else if (grade >= 50) {
     return "D";
@@ -42,7 +42,8 @@ function Complete({
       <ul className="summary-list">
         {summary.map((sm, i) => (
           <li key={i}>
-            {sm.label}: <span className="summary-list-value">{sm.value}</span>
+            {`${sm.label}: `}
+            <span className="summary-list-value">{sm.value}</span>
           </li>
         ))}
       </ul>

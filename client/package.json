@@ -10,6 +10,10 @@
     "react-router-dom": "^6.4.5",
     "react-scripts": "^5.0.1"
   },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0"
+  },
   "scripts": {
     "dev": "react-scripts start",
     "build": "react-scripts build",
