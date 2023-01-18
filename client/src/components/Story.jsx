@@ -4,6 +4,7 @@ import "./Story.css";
 import Card from "./common/Card";
 import FormContainer from "./FormContainer";
 import Complete from "./Complete";
+import Modal from "./common/Modal";
 
 let timerRef;
 
@@ -16,6 +17,7 @@ function Story({ selectedStory, fetchStoryById }) {
   const skipped = useRef(0);
   const duration = useRef(0);
   const [isComplete, setIsComplete] = useState(false);
+  const [isModalActive, setIsModalActive] = useState(false);
 
   useEffect(() => {
     fetchStoryById(id);
@@ -37,8 +39,12 @@ function Story({ selectedStory, fetchStoryById }) {
     setIsComplete(true);
   };
 
+  const handleToggleModal = () => {
+    setIsModalActive(!isModalActive);
+  };
+
   if (!selectedStory) {
-    return <p>Loading...</p>;
+    return <p className="text-center">Loading...</p>;
   }
   if (isComplete) {
     return (
@@ -54,13 +60,35 @@ function Story({ selectedStory, fetchStoryById }) {
   }
   return (
     <Card>
-      <Link to="/" className="close"></Link>
-      <h4>{selectedStory.title}</h4>
+      <div className="horizontal-flex">
+        <h4>{selectedStory.title}</h4>
+        <button onClick={handleToggleModal} style={{ border: "none" }}>
+          <i className="close"></i>
+        </button>
+      </div>
       <FormContainer
         sentences={selectedStory.passages}
         addSkipped={addSkipped}
         gotoComplete={handleGotoComplete}
       ></FormContainer>
+      <Modal
+        isModalActive={isModalActive}
+        close={() => {
+          setIsModalActive(false);
+        }}
+      >
+        <p>Are you sure you wan't to exit? You will lose your progress.</p>
+        <br />
+        <div className="horizontal-flex">
+          <Link to="/">
+            <button className="btn secondary">Exit</button>
+          </Link>
+
+          <button className="btn primary" onClick={handleToggleModal}>
+            Stay
+          </button>
+        </div>
+      </Modal>
     </Card>
   );
 }
