@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Complete.css";
 import Button from "./common/Button";
 import tadaAudioSrc from "../assets/audio/tada.mp3";
 
@@ -30,22 +29,30 @@ function Complete({
     { label: "Duration", value: `${duration} seconds` },
     { label: "Grade", value: calculateGrade(score) },
   ];
+  const grade_img_src = require(`../assets/images/grade_${calculateGrade(
+    score
+  ).toLowerCase()}.svg`);
 
   const tadaAudio = new Audio(tadaAudioSrc);
   tadaAudio.volume = 0.3;
   tadaAudio.play();
 
   return (
-    <section className="summary">
+    <section className="text-center">
       <h2>Summary</h2>
       <h3>{description}</h3>
-      <ul className="summary-list">
+      <ul className="list-unstyled px-5">
         {summary.map((sm, i) => (
-          <li key={i}>
+          <li className="d-flex justify-content-between my-3" key={i}>
             {`${sm.label}: `}
-            <span className="summary-list-value">{sm.value}</span>
+            <span>{sm.value}</span>
           </li>
         ))}
+        <img
+          src={grade_img_src}
+          className="mx-auto d-block"
+          style={{ height: "8em", width: "8em" }}
+        />
       </ul>
       <hr />
       <Link to="/">
