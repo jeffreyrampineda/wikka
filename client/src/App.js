@@ -1,7 +1,10 @@
+import "./custom.scss";
+
 import React, { useReducer } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import { getStories, getStoryById } from "./services/story.services";
+import Intro from "./components/Intro";
+import NavBar from "./components/common/NavBar";
 import StoriesList from "./components/StoriesList";
 import Story from "./components/Story";
 import Footer from "./components/Footer";
@@ -127,37 +130,44 @@ function App() {
 
   return (
     <Router>
-      <div>
-        <header>
-          <h1>Wikka</h1>
-          <h2>Practice your Japanese!</h2>
-        </header>
-        <section className="container">
-          <Routes>
-            <Route
-              index
-              element={
-                <React.Fragment>
-                  <StoriesList
-                    stories={state.stories}
-                    fetchStories={fetchStories}
-                  />
-                  <Footer></Footer>
-                </React.Fragment>
-              }
-            />
-            <Route
-              path="/stories/:id"
-              element={
+      <main>
+        <Routes>
+          <Route
+            index
+            element={
+              <React.Fragment>
+                <NavBar></NavBar>
+                <Intro />
+                <Footer></Footer>
+              </React.Fragment>
+            }
+          />
+          <Route
+            path="/stories"
+            element={
+              <React.Fragment>
+                <NavBar></NavBar>
+                <StoriesList
+                  stories={state.stories}
+                  fetchStories={fetchStories}
+                />
+                <Footer></Footer>
+              </React.Fragment>
+            }
+          />
+          <Route
+            path="/stories/:id"
+            element={
+              <div className="container">
                 <Story
                   selectedStory={state.selectedStory}
                   fetchStoryById={fetchStoryById}
                 />
-              }
-            />
-          </Routes>
-        </section>
-      </div>
+              </div>
+            }
+          />
+        </Routes>
+      </main>
     </Router>
   );
 }
