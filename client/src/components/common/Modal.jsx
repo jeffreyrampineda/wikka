@@ -4,7 +4,7 @@ import "./Modal.css";
 function Modal({ children, isModalActive, close }) {
   return (
     <div
-      class="modal"
+      className="modal"
       style={{ display: isModalActive ? "block" : "none" }}
       onClick={() => {
         // close modal when outside of modal is clicked
@@ -12,7 +12,7 @@ function Modal({ children, isModalActive, close }) {
       }}
     >
       <div
-        class="modal-content"
+        className="modal-content"
         onClick={(e) => {
           // do not close modal if anything inside modal content is clicked
           e.stopPropagation();

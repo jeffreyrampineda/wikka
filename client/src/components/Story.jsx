@@ -5,6 +5,7 @@ import Card from "./common/Card";
 import FormContainer from "./FormContainer";
 import Complete from "./Complete";
 import Modal from "./common/Modal";
+import Button from "./common/Button";
 
 let timerRef;
 
@@ -60,11 +61,14 @@ function Story({ selectedStory, fetchStoryById }) {
   }
   return (
     <Card>
-      <div className="horizontal-flex">
-        <h4>{selectedStory.title}</h4>
-        <button onClick={handleToggleModal} style={{ border: "none" }}>
-          <i className="close"></i>
-        </button>
+      <div className="d-flex justify-content-between">
+        <h4 className="display-6 mb-5">{selectedStory.title}</h4>
+        <button
+          onClick={handleToggleModal}
+          type="button"
+          className="btn-close btn btn-lg"
+          aria-label="Close"
+        ></button>
       </div>
       <FormContainer
         sentences={selectedStory.passages}
@@ -78,15 +82,13 @@ function Story({ selectedStory, fetchStoryById }) {
         }}
       >
         <p>Are you sure you wan't to exit? You will lose your progress.</p>
-        <br />
-        <div className="horizontal-flex">
+        <div className="d-flex justify-content-between">
           <Link to="/">
-            <button className="btn secondary">Exit</button>
+            <Button color="secondary">Exit</Button>
           </Link>
-
-          <button className="btn primary" onClick={handleToggleModal}>
+          <Button color="primary" onClick={handleToggleModal}>
             Stay
-          </button>
+          </Button>
         </div>
       </Modal>
     </Card>

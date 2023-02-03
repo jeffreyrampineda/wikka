@@ -30,7 +30,7 @@ function Intro() {
           <div className="col-7">
             <img
               src={hero_banner_type_writer}
-              class="img-fluid"
+              className="img-fluid"
               alt="A typewriter image"
             />
           </div>
@@ -41,7 +41,7 @@ function Intro() {
           <div className="col-6">
             <img
               src={undraw_reading_time}
-              class="img-fluid"
+              className="img-fluid"
               alt="Reading time"
             />
           </div>
@@ -66,12 +66,12 @@ function Intro() {
             </p>
           </div>
           <div className="col-6">
-            <img src={undraw_group_chat} class="img-fluid" alt="Reading time" />
+            <img src={undraw_group_chat} className="img-fluid" alt="Reading time" />
           </div>
         </div>
         <div className="row align-items-center mb-5">
           <div className="col-6">
-            <img src={undraw_travelers} class="img-fluid" alt="Reading time" />
+            <img src={undraw_travelers} className="img-fluid" alt="Reading time" />
           </div>
           <div className="col-6">
             <p className="lead">

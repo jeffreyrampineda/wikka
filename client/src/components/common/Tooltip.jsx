@@ -3,7 +3,7 @@ import "./Tooltip.css";
 
 function Tooltip({ children, message }) {
   return (
-    <span className="tooltip">
+    <span className="w-tooltip">
       {children}
       {message && <span className="tooltipmessage">{message}</span>}
     </span>

@@ -1,10 +1,9 @@
 import React from "react";
-import "./Card.css";
 
 function Card({ children }) {
   return (
-    <article className="card">
-      <div className="container">{children}</div>
+    <article className="card shadow m-4">
+      <div className="card-body">{children}</div>
     </article>
   );
 }

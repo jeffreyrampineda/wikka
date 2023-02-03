@@ -4,11 +4,6 @@ import InputBox from "./InputBox";
 import Button from "./common/Button";
 import { generateTranslation } from "../helpers/translator";
 
-const formActionsStyle = {
-  display: "flex",
-  justifyContent: "space-between",
-};
-
 /**
  * @param {Array<string>} sentences
  * @param {function} addSkipped
@@ -30,12 +25,14 @@ function FormContainer({ sentences, addSkipped, gotoComplete }) {
   const isLastSentence = () => currentIndexSentence + 1 >= sentences.length;
 
   // Change to <Complete /> component for summary.
-  const handleOnComplete = () => {
+  const handleOnComplete = (event) => {
+    event.preventDefault();
     gotoComplete();
   };
 
   // Updates which sentence is currently active & resets canNextSentence.
-  const handleNextSentence = () => {
+  const handleNextSentence = (event) => {
+    event.preventDefault();
     const _nextIndexSentence = currentIndexSentence + 1;
 
     if (_nextIndexSentence < sentences.length) {
@@ -46,14 +43,14 @@ function FormContainer({ sentences, addSkipped, gotoComplete }) {
   };
 
   // Skip to the next available sentence or complete the story.
-  const handleOnSkipped = () => {
+  const handleOnSkipped = (event) => {
     // Increment skipped by 1.
     addSkipped();
 
     if (isLastSentence()) {
-      handleOnComplete();
+      handleOnComplete(event);
     }
-    handleNextSentence();
+    handleNextSentence(event);
   };
 
   /**
@@ -80,7 +77,7 @@ function FormContainer({ sentences, addSkipped, gotoComplete }) {
   };
 
   return (
-    <React.Fragment>
+    <form onSubmit={isLastSentence() ? handleOnComplete : handleNextSentence}>
       <Sentence
         sentence={sentence}
         currentIndexChar={currentIndexChar}
@@ -89,23 +86,19 @@ function FormContainer({ sentences, addSkipped, gotoComplete }) {
         translation={sentence[currentIndexChar]?.translation}
         nextChar={handleNextChar}
       ></InputBox>
-      <hr />
-      <div style={formActionsStyle}>
+      <hr className="my-4" />
+      <div className="d-flex justify-content-between align-items-center">
         <Button color="secondary" onClick={handleOnSkipped}>
           Skip
         </Button>
-        <p>
+        <p className="lead">
           Page: {currentIndexSentence + 1}/{sentences.length}
         </p>
-        <Button
-          color="primary"
-          disabled={!canNextSentence}
-          onClick={isLastSentence() ? handleOnComplete : handleNextSentence}
-        >
+        <Button color="primary" disabled={!canNextSentence} type="submit">
           {isLastSentence() ? "Complete" : "Next"}
         </Button>
       </div>
-    </React.Fragment>
+    </form>
   );
 }
 

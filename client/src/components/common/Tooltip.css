@@ -1,11 +1,12 @@
-.tooltip {
+.w-tooltip {
   position: relative;
   display: inline-block;
-  padding-bottom: 4px;
-  border-bottom: 2px dotted grey;
+  padding-bottom: 0.8rem;
+  text-decoration: underline dotted grey;
+  text-underline-offset: 0.8rem;
 }
 
-.tooltip .tooltipmessage {
+.w-tooltip .tooltipmessage {
   visibility: hidden;
   width: 3em;
   background-color: grey;
@@ -21,7 +22,7 @@
   margin-left: -1.5em;
 }
 
-.tooltip .tooltipmessage::after {
+.w-tooltip .tooltipmessage::after {
   content: "";
   position: absolute;
   top: 100%;
@@ -32,6 +33,6 @@
   border-color: grey transparent transparent transparent;
 }
 
-.tooltip:hover .tooltipmessage {
+.w-tooltip:hover .tooltipmessage {
   visibility: visible;
 }

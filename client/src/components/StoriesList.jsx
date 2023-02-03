@@ -1,12 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./StoriesList.css";
 import Card from "./common/Card";
 import Button from "./common/Button";
-
-const storiesActionsStyle = {
-  textAlign: "center",
-};
 
 /**
  * @param {Array<Story>} stories
@@ -21,42 +16,41 @@ function StoriesList({ stories, fetchStories }) {
 
   if (stories === null) {
     storiesView = (
-      <div className="text-center mt-3">
+      <section className="text-center mt-3">
         <p>Unable to retrieve stories list</p>
-      </div>
+      </section>
     );
   } else if (stories.length === 0) {
     storiesView = (
-      <div className="text-center mt-3">
+      <section className="text-center mt-3">
         <p>No stories yet.</p>
-      </div>
+      </section>
     );
   } else {
     storiesView = (
-      <div>
+      <section className="grid gap-3">
         {stories.map((story) => (
           <Card key={story._id}>
-            <div className="m-bottom-1">
-              <h4>{story.title}</h4>
-              <small>By {story.author.name}</small>
-              <p>{story.description}</p>
-            </div>
-            <div style={storiesActionsStyle}>
+            <h3 className="card-title display-6 mb-5">{story.title}</h3>
+            <small className="blockquote-footer">By {story.author.name}</small>
+            <p className="card-text lead">{story.description}</p>
+
+            <div className="text-center">
               <Link to={`/stories/${story._id}`}>
                 <Button color="primary">Read This</Button>
               </Link>
             </div>
           </Card>
         ))}
-      </div>
+      </section>
     );
   }
 
   return (
-    <section className="stories-list">
-      <h3>Pick one of the stories to read</h3>
+    <>
+      <h1 className="display-3 text-center">Pick one of the stories to read</h1>
       {storiesView}
-    </section>
+    </>
   );
 }
 

@@ -4,7 +4,7 @@ import "./Button.css";
 function Button({ children, disabled, color, onClick }) {
   return (
     <button
-      className={`btn ${color} ${disabled ? "btn-disabled" : ""}`}
+      className={`w-btn btn btn-${color} ${disabled ? "btn-disabled" : ""}`}
       disabled={disabled}
       onClick={onClick}
     >
