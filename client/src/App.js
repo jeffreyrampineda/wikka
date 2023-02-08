@@ -3,11 +3,9 @@ import "./custom.scss";
 import React, { useReducer } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Intro from "./components/Intro";
-import NavBar from "./components/common/NavBar";
-import StoriesList from "./components/StoriesList";
-import Story from "./components/Story";
-import Footer from "./components/Footer";
+import Home from "./views/Home";
+import Stories from "./views/Stories";
+import StoryDetail from "./views/StoryDetail";
 
 const initialState = {
   stories: [],
@@ -132,38 +130,20 @@ function App() {
     <Router>
       <main>
         <Routes>
-          <Route
-            index
-            element={
-              <React.Fragment>
-                <NavBar></NavBar>
-                <Intro />
-                <Footer></Footer>
-              </React.Fragment>
-            }
-          />
+          <Route index element={<Home />} />
           <Route
             path="/stories"
             element={
-              <React.Fragment>
-                <NavBar></NavBar>
-                <StoriesList
-                  stories={state.stories}
-                  fetchStories={fetchStories}
-                />
-                <Footer></Footer>
-              </React.Fragment>
+              <Stories stories={state.stories} fetchStories={fetchStories} />
             }
           />
           <Route
             path="/stories/:id"
             element={
-              <div className="container">
-                <Story
-                  selectedStory={state.selectedStory}
-                  fetchStoryById={fetchStoryById}
-                />
-              </div>
+              <StoryDetail
+                selectedStory={state.selectedStory}
+                fetchStoryById={fetchStoryById}
+              />
             }
           />
         </Routes>
