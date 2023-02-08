@@ -3,12 +3,12 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const app = require("./app");
-const db = require('./db');
-const debug = require('debug')('wikka:server');
+const db = require("./db");
+const debug = require("debug")("wikka:server");
 const http = require("http");
 
 // Get port from environment and store in Express.
-const port = normalizePort(process.env.PORT || '3001');
+const port = normalizePort(process.env.PORT || "3001");
 app.set("port", port);
 
 // Create HTTP server.
@@ -16,11 +16,11 @@ const server = http.createServer(app);
 
 // Listen on provided port, on all network interfaces.
 server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+server.on("error", onError);
+server.on("listening", onListening);
 
 // Database
-db.init();
+db.main().catch((err) => debug("Database connection error"));
 
 // Normalize a port into a number, string, or false.
 function normalizePort(val) {

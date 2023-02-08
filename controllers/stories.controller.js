@@ -2,18 +2,35 @@ const Story = require("../models/story.model");
 const Author = require("../models/author.model");
 
 async function stories_list(req, res, next) {
-  const result = await Story.find().populate("author", "first_name last_name");
-  res.send(result);
+  try {
+    const result = await Story.find().populate(
+      "author",
+      "first_name last_name"
+    );
+    if (!result) {
+      res.sendStatus(404);
+      return;
+    }
+
+    res.send(result);
+  } catch (err) {
+    res.sendStatus(500);
+  }
 }
 
 async function stories_detail(req, res, next) {
-  const { id } = req.params;
-  const result = await Story.findById(id).populate("author");
-  if (!result) {
-    res.sendStatus(404);
-    return;
+  try {
+    const { id } = req.params;
+    const result = await Story.findById(id).populate("author");
+    if (!result) {
+      res.sendStatus(404);
+      return;
+    }
+
+    res.send(result);
+  } catch (err) {
+    res.sendStatus(500);
   }
-  res.send(result);
 }
 
 module.exports = {
