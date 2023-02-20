@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="text-center p-5">
+    <footer className="text-center">
       <small>
         <p>This is a demo</p>
         <a

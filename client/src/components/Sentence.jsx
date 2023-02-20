@@ -8,7 +8,7 @@ import Tooltip from "./common/Tooltip";
  */
 function Sentence({ sentence, currentIndexChar }) {
   return (
-    <p className="sentence">
+    <p className="form__sentence">
       {sentence.map((mc, i) => {
         if (mc.translation) {
           return (

@@ -9,44 +9,44 @@ import undraw_travelers from "../assets/images/undraw_travelers.svg";
 function Intro() {
   return (
     <>
-      <section className="hero-section mb-5">
-        <div className="row g-0 p-5 align-items-center">
-          <div className="col-5 px-5">
-            <h1 className="display-4">
+      <section className="hero container">
+        <div className="hero__content">
+          <div className="hero__content__intro">
+            <h1 className="hero__content__intro--heading">
               The free, fun, and interactive way to learn a language!
             </h1>
-            <p className="my-5 lead text-secondary">
+            <p className="hero__content__intro--description">
               Maximize your proficiency in reading Japanese by engaging in
               practical, frequent and sustained learning opportunities while
               learning various Japanese stories.
             </p>
-            <Link to={"/stories/"} className="me-4">
-              <Button color="primary text-white">Get started</Button>
+            <Link to={"/stories/"} className="me-1">
+              <Button wClass="btn--primary">Get started</Button>
             </Link>
             <Link to={"/#learn-more"}>
-              <Button color="secondary">Learn more</Button>
+              <Button wClass="btn--secondary">Learn more</Button>
             </Link>
           </div>
-          <div className="col-7">
+          <div className="hero__content__banner">
             <img
               src={hero_banner_type_writer}
-              className="img-fluid"
+              className="hero__content__banner--image hover-grow-1"
               alt="A typewriter image"
             />
           </div>
         </div>
       </section>
-      <section className="container my-5" id="learn-more">
-        <div className="row align-items-center mb-5">
-          <div className="col-6">
+      <section className="learn-more container" id="learn-more">
+        <div className="learn-more__content">
+          <div className="learn-more__content__banner">
             <img
               src={undraw_reading_time}
-              className="img-fluid"
+              className="learn-more__content__banner--image hover-grow-1"
               alt="Reading time"
             />
           </div>
-          <div className="col-6">
-            <p className="lead">
+          <div className="learn-more__content__intro">
+            <p className="learn-more__content__intro--description">
               Immerse yourself in the rich Japanese mythological and folktale
               stories while advancing your language skills. Our offerings
               include some of the most popular Japanese tales, covering a
@@ -55,9 +55,9 @@ function Intro() {
             </p>
           </div>
         </div>
-        <div className="row align-items-center mb-5">
-          <div className="col-6">
-            <p className="lead">
+        <div className="learn-more__content">
+          <div className="learn-more__content__intro">
+            <p className="learn-more__content__intro--description">
               With your newly acquired reading and writing skills, you can
               communicate with others online. By using your reading and writing
               skills, you can expand your social network, connect with others
@@ -65,16 +65,24 @@ function Intro() {
               skills.
             </p>
           </div>
-          <div className="col-6">
-            <img src={undraw_group_chat} className="img-fluid" alt="Reading time" />
+          <div className="learn-more__content__banner">
+            <img
+              src={undraw_group_chat}
+              className="learn-more__content__banner--image hover-grow-1"
+              alt="Reading time"
+            />
           </div>
         </div>
-        <div className="row align-items-center mb-5">
-          <div className="col-6">
-            <img src={undraw_travelers} className="img-fluid" alt="Reading time" />
+        <div className="learn-more__content">
+          <div className="learn-more__content__banner">
+            <img
+              src={undraw_travelers}
+              className="learn-more__content__banner--image hover-grow-1"
+              alt="Reading time"
+            />
           </div>
-          <div className="col-6">
-            <p className="lead">
+          <div className="learn-more__content__intro">
+            <p className="learn-more__content__intro--description">
               Having conversational skills can greatly enhance your traveling
               experience. It allows you to communicate with the locals and get a
               more authentic and immersive experience. You can ask for

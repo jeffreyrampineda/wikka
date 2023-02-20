@@ -1,0 +1,22 @@
+$level-1: 1.5rem;
+$level-2: 2rem;
+
+.m {
+  &t {
+    &-1 {
+      margin-top: $level-1;
+    }
+  }
+  &e {
+    &-1 {
+      margin-right: $level-1;
+    }
+  }
+
+  &y {
+    &-1 {
+      margin-top: $level-1;
+      margin-bottom: $level-1;
+    }
+  }
+}

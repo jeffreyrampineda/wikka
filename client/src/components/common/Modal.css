@@ -14,10 +14,22 @@
 }
 
 /* Modal Content */
-.modal-content {
+.modal__content {
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
   width: 25%;
+}
+
+.modal__description {
+  font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.modal__actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

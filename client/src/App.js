@@ -1,4 +1,4 @@
-import "./custom.scss";
+import "./styles/main.scss";
 
 import React, { useReducer } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";

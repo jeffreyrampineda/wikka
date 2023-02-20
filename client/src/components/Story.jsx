@@ -60,15 +60,17 @@ function Story({ selectedStory, fetchStoryById }) {
     );
   }
   return (
-    <Card>
-      <div className="d-flex justify-content-between">
-        <h4 className="display-6 mb-5">{selectedStory.title}</h4>
+    <div className="story">
+      <div className="story__header">
+        <h4 className="story--title">{selectedStory.title}</h4>
         <button
+          className="story__header--close"
           onClick={handleToggleModal}
           type="button"
-          className="btn-close btn btn-lg"
           aria-label="Close"
-        ></button>
+        >
+          <span className="story__header--close-icon"></span>
+        </button>
       </div>
       <FormContainer
         sentences={selectedStory.passages}
@@ -81,17 +83,19 @@ function Story({ selectedStory, fetchStoryById }) {
           setIsModalActive(false);
         }}
       >
-        <p>Are you sure you wan't to exit? You will lose your progress.</p>
-        <div className="d-flex justify-content-between">
-          <Link to="/">
-            <Button color="secondary">Exit</Button>
+        <p className="modal__description">
+          Are you sure you wan't to exit? You will lose your progress.
+        </p>
+        <div className="modal__actions mt-1">
+          <Link to="/stories">
+            <Button wClass="btn--secondary">Exit</Button>
           </Link>
-          <Button color="primary" onClick={handleToggleModal}>
+          <Button wClass="btn--primary" onClick={handleToggleModal}>
             Stay
           </Button>
         </div>
       </Modal>
-    </Card>
+    </div>
   );
 }
 

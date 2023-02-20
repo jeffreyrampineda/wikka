@@ -86,15 +86,15 @@ function FormContainer({ sentences, addSkipped, gotoComplete }) {
         translation={sentence[currentIndexChar]?.translation}
         nextChar={handleNextChar}
       ></InputBox>
-      <hr className="my-4" />
-      <div className="d-flex justify-content-between align-items-center">
-        <Button color="secondary" onClick={handleOnSkipped}>
+      <hr className="mt-1" />
+      <div className="form__actions mt-1">
+        <Button wClass="btn--secondary" onClick={handleOnSkipped}>
           Skip
         </Button>
-        <p className="lead">
+        <p>
           Page: {currentIndexSentence + 1}/{sentences.length}
         </p>
-        <Button color="primary" disabled={!canNextSentence} type="submit">
+        <Button wClass="btn--primary" disabled={!canNextSentence} type="submit">
           {isLastSentence() ? "Complete" : "Next"}
         </Button>
       </div>

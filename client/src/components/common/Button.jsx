@@ -1,10 +1,10 @@
 import React from "react";
 import "./Button.css";
 
-function Button({ children, disabled, color, onClick }) {
+function Button({ children, disabled, wClass, onClick }) {
   return (
     <button
-      className={`w-btn btn btn-${color} ${disabled ? "btn-disabled" : ""}`}
+      className={`btn ${wClass} hover-grow-2 ${disabled ? "btn--disabled" : ""}`}
       disabled={disabled}
       onClick={onClick}
     >

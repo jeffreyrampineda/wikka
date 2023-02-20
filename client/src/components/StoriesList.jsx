@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import Card from "./common/Card";
-import Button from "./common/Button";
 
 /**
  * @param {Array<Story>} stories
@@ -16,42 +14,57 @@ function StoriesList({ stories, fetchStories }) {
 
   if (stories === null) {
     storiesView = (
-      <section className="text-center mt-3">
+      <section className="text-center">
         <p>Unable to retrieve stories list</p>
       </section>
     );
   } else if (stories.length === 0) {
     storiesView = (
-      <section className="text-center mt-3">
+      <section className="text-center">
         <p>No stories yet.</p>
       </section>
     );
   } else {
     storiesView = (
-      <section className="grid gap-3">
-        {stories.map((story) => (
-          <Card key={story._id}>
-            <h3 className="card-title display-6 mb-5">{story.title}</h3>
-            <small className="blockquote-footer">By {story.author.name}</small>
-            <p className="card-text lead">{story.description}</p>
-
-            <div className="text-center">
-              <Link to={`/stories/${story._id}`}>
-                <Button color="primary">Read This</Button>
+      <div className="stories">
+        <section className="stories__menu">
+          <ul className="stories__menu__nav">
+            <li className="stories__menu__nav--item">
+              <Link className="stories__menu__nav--link active">
+                New Releases
               </Link>
-            </div>
-          </Card>
-        ))}
-      </section>
+            </li>
+            <li className="stories__menu__nav--item">
+              <Link className="stories__menu__nav--link">Favourites</Link>
+            </li>
+            <li className="stories__menu__nav--item">
+              <Link className="stories__menu__nav--link">Recommendation</Link>
+            </li>
+          </ul>
+        </section>
+        <section className="stories__main">
+          <div className="stories__main__header">
+            <h2 className="stories__main--heading">New Releases</h2>
+          </div>
+          <div className="stories__list">
+            {stories.map((story) => (
+              <Link
+                to={`/stories/${story._id}`}
+                className="stories__list--item hover-grow-1"
+                style={{ textDecoration: "none" }}
+              >
+                <div className="stories__list--image"></div>
+                <h3 className="stories__list--title">{story.title}</h3>
+                <p className="stories__list--author">By {story.author.name}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+      </div>
     );
   }
 
-  return (
-    <>
-      <h1 className="display-3 text-center">Pick one of the stories to read</h1>
-      {storiesView}
-    </>
-  );
+  return <div className="container">{storiesView}</div>;
 }
 
 export default StoriesList;

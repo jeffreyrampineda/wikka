@@ -34,6 +34,7 @@ function InputBox({ translation, nextChar }) {
 
   return (
     <textarea
+      className="my-1"
       style={inputBoxStyle}
       id="userInput"
       rows="3"

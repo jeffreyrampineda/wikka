@@ -12,7 +12,7 @@ function Modal({ children, isModalActive, close }) {
       }}
     >
       <div
-        className="modal-content"
+        className="modal__content"
         onClick={(e) => {
           // do not close modal if anything inside modal content is clicked
           e.stopPropagation();
