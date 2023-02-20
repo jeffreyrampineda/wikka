@@ -1,3 +1,4 @@
+const createError = require("http-errors");
 const Story = require("../models/story.model");
 const Author = require("../models/author.model");
 
@@ -8,13 +9,12 @@ async function stories_list(req, res, next) {
       "first_name last_name"
     );
     if (!result) {
-      res.sendStatus(404);
-      return;
+      return res.send([]);
     }
 
-    res.send(result);
+    return res.send(result);
   } catch (err) {
-    res.sendStatus(500);
+    return next(createError(500));
   }
 }
 
@@ -23,13 +23,12 @@ async function stories_detail(req, res, next) {
     const { id } = req.params;
     const result = await Story.findById(id).populate("author");
     if (!result) {
-      res.sendStatus(404);
-      return;
+      return res.sendStatus(404);
     }
 
-    res.send(result);
+    return res.send(result);
   } catch (err) {
-    res.sendStatus(500);
+    return next(createError(500));
   }
 }
 
