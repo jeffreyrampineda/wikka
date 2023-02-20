@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./Story.css";
-import Card from "./common/Card";
-import FormContainer from "./FormContainer";
+import Card from "../common/Card";
+import Modal from "../common/Modal";
+import Button from "../common/Button";
 import Complete from "./Complete";
-import Modal from "./common/Modal";
-import Button from "./common/Button";
+import FormContainer from "./FormContainer";
 
 let timerRef;
 

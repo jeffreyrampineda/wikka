@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { generateTranslation } from "../../helpers/translator";
+import Button from "../common/Button";
 import Sentence from "./Sentence";
 import InputBox from "./InputBox";
-import Button from "./common/Button";
-import { generateTranslation } from "../helpers/translator";
 
 /**
  * @param {Array<string>} sentences

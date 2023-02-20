@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from "./common/Button";
-import tadaAudioSrc from "../assets/audio/tada.mp3";
+import Button from "../common/Button";
+import tadaAudioSrc from "../../assets/audio/tada.mp3";
 
 function calculateGrade(grade) {
   if (grade >= 80) {
@@ -29,7 +29,7 @@ function Complete({
     { label: "Duration", value: `${duration} seconds` },
     { label: "Grade", value: calculateGrade(score) },
   ];
-  const grade_img_src = require(`../assets/images/grade_${calculateGrade(
+  const grade_img_src = require(`../../assets/images/grade_${calculateGrade(
     score
   ).toLowerCase()}.svg`);
 

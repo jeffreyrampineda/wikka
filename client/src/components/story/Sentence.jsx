@@ -1,6 +1,6 @@
 import React from "react";
 import "./Sentence.css";
-import Tooltip from "./common/Tooltip";
+import Tooltip from "../common/Tooltip";
 
 /**
  * @param {Array<char>} sentence

@@ -1,5 +1,5 @@
 import React from "react";
-import Story from "../components/Story";
+import Story from "../components/story/Story";
 
 function StoryDetail({ selectedStory, fetchStoryById }) {
   return (
