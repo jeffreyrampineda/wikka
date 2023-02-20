@@ -1,12 +1,21 @@
 @import "./margins";
+@import "./mixins";
 
 .text-center {
   text-align: center;
 }
 
 .container {
-  padding-left: 96px;
-  padding-right: 96px;
+  padding-left: 16px;
+  padding-right: 16px;
+  @include tablet {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  @include desktop {
+    padding-left: 96px;
+    padding-right: 96px;
+  }
 }
 
 .btn {

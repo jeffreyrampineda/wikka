@@ -1,6 +1,7 @@
 @import "./resets";
 @import "./variables";
 @import "./common";
+@import "./mixins";
 
 body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
@@ -56,20 +57,40 @@ footer {
 
 .hero {
   background-color: $bg-color-primary-soft;
-  padding-top: 64px;
-  padding-bottom: 64px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  @include tablet {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+  @include desktop {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
 
   &__content {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    @include desktop {
+      flex-direction: row;
+    }
 
     &__intro {
-      width: 40%;
+      width: 100%;
+      @include desktop {
+        width: 40%;
+      }
 
       &--heading {
-        font-size: 3.5rem;
+        font-size: 2.5rem;
         font-weight: 300;
-        line-height: 1.2;
+        @include tablet {
+          font-size: 3rem;
+        }
+        @include desktop {
+          font-size: 3.5rem;
+          line-height: 1.2;
+        }
       }
 
       &--description {
@@ -80,10 +101,33 @@ footer {
         padding-top: 48px;
         padding-bottom: 48px;
       }
+
+      &__cto {
+        &--container {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          @include tablet {
+            flex-direction: row;
+          }
+        }
+
+        &--button {
+          width: 100%;
+          @include tablet {
+            width: initial;
+          }
+        }
+      }
     }
 
     &__banner {
-      width: 60%;
+      display: none;
+      width: 100%;
+      @include desktop {
+        display: block;
+        width: 60%;
+      }
 
       &--image {
         width: 100%;
@@ -93,16 +137,28 @@ footer {
 }
 
 .learn-more {
-  padding: 64px 256px 64px 256px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 16px;
+  @include tablet {
+    padding: 32px;
+  }
+  @include desktop {
+    padding: 64px 256px 64px 256px;
+  }
 
   &__content {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 32px;
 
     &__intro {
-      width: 60%;
+      width: 100%;
+      @include desktop {
+        display: block;
+        width: 60%;
+      }
 
       &--description {
         font-size: 1.25rem;
@@ -112,7 +168,12 @@ footer {
     }
 
     &__banner {
-      width: 40%;
+      display: none;
+      width: 100%;
+      @include desktop {
+        display: block;
+        width: 40%;
+      }
 
       &--image {
         width: 100%;
@@ -273,9 +334,12 @@ footer {
 
   &__actions {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
+    flex-direction: column;
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline;
+    }
   }
 }
 

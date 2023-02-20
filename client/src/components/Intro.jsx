@@ -20,12 +20,18 @@ function Intro() {
               practical, frequent and sustained learning opportunities while
               learning various Japanese stories.
             </p>
-            <Link to={"/stories/"} className="me-1">
-              <Button wClass="btn--primary">Get started</Button>
-            </Link>
-            <Link to={"/#learn-more"}>
-              <Button wClass="btn--secondary">Learn more</Button>
-            </Link>
+            <div className="hero__content__intro__cto--container">
+              <Link to={"/stories/"}>
+                <Button wClass="btn--primary hero__content__intro__cto--button">
+                  Get started
+                </Button>
+              </Link>
+              <Link to={"/#learn-more"}>
+                <Button wClass="btn--secondary hero__content__intro__cto--button">
+                  Learn more
+                </Button>
+              </Link>
+            </div>
           </div>
           <div className="hero__content__banner">
             <img
