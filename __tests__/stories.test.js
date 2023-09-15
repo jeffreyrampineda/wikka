@@ -58,7 +58,7 @@ describe("GET /api/stories", () => {
 describe("GET /api/stories/:id", () => {
   it("should return a 404 when provided incorrect :id", async () => {
     await mock_author_story();
-    const incorrect_id = mongoose.Types.ObjectId();
+    const incorrect_id = new mongoose.Types.ObjectId();
 
     const res = await request(app).get("/api/stories/" + incorrect_id);
     expect(res.statusCode).toBe(404);
