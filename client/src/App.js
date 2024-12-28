@@ -1,11 +1,13 @@
-import "./styles/main.scss";
+import './styles/main.scss';
 
-import React, { useReducer } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css";
-import Home from "./views/Home";
-import Stories from "./views/Stories";
-import StoryDetail from "./views/StoryDetail";
+import React, { useReducer } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './App.css';
+import { getStories, getStoryById } from './services/story.services';
+import Home from './views/Home';
+import Stories from './views/Stories';
+import StoryDetail from './views/StoryDetail';
+import About from './views/About';
 
 const initialState = {
   stories: [],
@@ -14,16 +16,16 @@ const initialState = {
 };
 
 // CONSTANTS
-export const REQUEST_STORIES = "REQUEST_STORIES";
-export const REQUEST_STORIES_SUCCESS = "REQUEST_STORIES_SUCCESS";
-export const REQUEST_STORIES_FAILED = "REQUEST_STORIES_FAILED";
-export const REQUEST_STORY_DETAIL = "REQUEST_STORY_DETAIL";
-export const REQUEST_STORY_DETAIL_SUCCESS = "REQUEST_STORY_DETAIL_SUCCESS";
-export const REQUEST_STORY_DETAIL_FAILED = "REQUEST_STORY_DETAIL_FAILED";
+export const REQUEST_STORIES = 'REQUEST_STORIES';
+export const REQUEST_STORIES_SUCCESS = 'REQUEST_STORIES_SUCCESS';
+export const REQUEST_STORIES_FAILED = 'REQUEST_STORIES_FAILED';
+export const REQUEST_STORY_DETAIL = 'REQUEST_STORY_DETAIL';
+export const REQUEST_STORY_DETAIL_SUCCESS = 'REQUEST_STORY_DETAIL_SUCCESS';
+export const REQUEST_STORY_DETAIL_FAILED = 'REQUEST_STORY_DETAIL_FAILED';
 
 // ACTIONS
 function requestStories() {
-  console.log("DISPATCH: requestStories");
+  console.log('DISPATCH: requestStories');
   return {
     type: REQUEST_STORIES,
     isLoading: true,
@@ -48,7 +50,7 @@ function requestStoriesFailed(error) {
 }
 
 function requestStoryDetail(id) {
-  console.log("DISPATCH: requestStoryDetail id: " + id);
+  console.log('DISPATCH: requestStoryDetail id: ' + id);
   return {
     type: REQUEST_STORY_DETAIL,
     isLoading: true,
@@ -112,18 +114,20 @@ function App() {
 
   function fetchStories() {
     dispatch(requestStories());
-    return fetch(`/api/stories`)
-      .then((response) => response.json())
-      .then((data) => dispatch(requestStoriesSuccess(data)))
-      .catch((error) => dispatch(requestStoriesFailed(error)));
+    //return fetch(`/api/stories`)
+    //  .then((response) => response.json())
+    //  .then((data) => dispatch(requestStoriesSuccess(data)))
+    //  .catch((error) => dispatch(requestStoriesFailed(error)));
+    dispatch(requestStoriesSuccess(getStories()));
   }
 
   const fetchStoryById = (id) => {
     dispatch(requestStoryDetail(id));
-    return fetch(`/api/stories/${id}`)
-      .then((response) => response.json())
-      .then((data) => dispatch(requestStoryDetailsSuccess(data)))
-      .catch((error) => dispatch(requestStoryDetailFailed(error)));
+    //return fetch(`/api/stories/${id}`)
+    //  .then((response) => response.json())
+    //  .then((data) => dispatch(requestStoryDetailsSuccess(data)))
+    //  .catch((error) => dispatch(requestStoryDetailFailed(error)));
+    dispatch(requestStoryDetailsSuccess(getStoryById(id)));
   };
 
   return (
@@ -146,6 +150,7 @@ function App() {
               />
             }
           />
+          <Route path="/about" element={<About />} />
         </Routes>
       </main>
     </Router>

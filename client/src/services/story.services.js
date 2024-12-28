@@ -1,4 +1,4 @@
-import { stories_mock } from "../helpers/stories.mock";
+import { stories_mock } from '../helpers/stories.mock';
 
 export function getStories() {
   // Mock getStories.
@@ -7,5 +7,5 @@ export function getStories() {
 
 export function getStoryById(id) {
   // Mock getStoryById.
-  return stories_mock.find((story) => story.id === Number(id));
+  return stories_mock.find((story) => story._id == id);
 }

@@ -1,51 +1,65 @@
-const theTest = [
-  "「「「き」 ちかく",
-  "きゃちょっち",
-  "びっくり 「ふしぎな たけ だ。」",
-  "みやこ。",
-  "むかし",
-];
-
-const princessKaguya = [
-  "むかし、 みやこ の ちかく の むら に たけとり の おきな と よばれて いる おじいさん が いました。",
-  "おじいさん は まいにちやま へ いって たけ を とり、 それ で かご を あみ、 ざる を つくって くらして いました。",
-  "ある ひ、 おじいさん が たけ を きろう と したら ねもと の ぴかぴか ひかる たけ が ありました。 「ふしぎな たけ だ。」",
-  "おじいさん は びっくりして その たけ を そっと きって みました。すると どう でしょう。 たけ の なか に ちいさな おんな の こ が いました。",
-  "「なんて かわいい こ だ。」おじいさん は おおよろこび で おんなのこ を だきあげ、いえ に つれて かえりました。",
-];
-
-const momotaro = [
-  "むかし、 むかし、 ある ところ に おじいさん と おばあさん が いました。",
-  "おじいさん が やま へ き を きり に いけば、 おばあさん は かわ へ せんたく に でかけます。",
-  "「おじいさん、 はよう もどってきなされ。」",
-  "おばあさん も き を つけて な。」",
-  "まいにち やさしく いい あって でかけます。",
+const authors_mock = [
+  {
+    _id: '0',
+    first_name: 'Jeffrey Ram',
+    last_name: 'Pineda',
+    name: 'Pineda, Jeffrey Ram',
+    lifespan: ' - ',
+  },
+  {
+    _id: '1',
+    first_name: 'Crunchy Nihongo',
+    last_name: '',
+    name: 'Crunchy Nihongo',
+    lifespan: ' - ',
+  },
 ];
 
 const stories_mock = [
   {
-    id: 0,
-    author: "Jeffrey Ram Pineda",
-    title: "The Hiragana",
+    _id: '0',
+    title: 'The Hiragana',
+    author: authors_mock[0],
     description:
-      "This is a simple collection of random words created to test different reading rules.",
-    sentences: theTest,
+      'This is a simple collection of random words created to test different reading rules.',
+    passages: [
+      '「「「き」 ちかく',
+      'きゃちょっち',
+      'びっくり 「ふしぎな たけ だ。」',
+      'みやこ。',
+      'むかし',
+    ],
+    genre: [],
   },
   {
-    id: 1,
-    author: "Crunchy Nihongo",
-    title: "Princess Kaguya",
+    _id: '1',
+    title: 'The Tale of Princess Kaguya',
+    author: authors_mock[0],
     description:
-      "A baby who was found inside a shiny bamboo stalk, grow into a beautiful lady and orders her suitors to prove their love by completing near-impossible tasks",
-    sentences: princessKaguya,
+      'A baby who was found inside a shiny bamboo stalk, grow into a beautiful lady and orders her suitors to prove their love by completing near-impossible tasks.',
+    passages: [
+      'むかし、 みやこ の ちかく の むら に たけとり の おきな と よばれて いる おじいさん が いました。',
+      'おじいさん は まいにちやま へ いって たけ を とり、 それ で かご を あみ、 ざる を つくって くらして いました。',
+      'ある ひ、 おじいさん が たけ を きろう と したら ねもと の ぴかぴか ひかる たけ が ありました。 「ふしぎな たけ だ。」',
+      'おじいさん は びっくりして その たけ を そっと きって みました。すると どう でしょう。 たけ の なか に ちいさな おんな の こ が いました。',
+      '「なんて かわいい こ だ。」おじいさん は おおよろこび で おんなのこ を だきあげ、いえ に つれて かえりました。',
+    ],
+    genre: ['0', '1'],
   },
   {
-    id: 2,
-    author: "Crunchy Nihongo",
-    title: "Momotaro",
+    _id: '2',
+    title: 'The Tale of Momotaro',
+    author: authors_mock[1],
     description:
-      "A boy who came out from a giant peach found in a river, decided to help his parents and village by fighting the evil Oni with the help of his animal friends",
-    sentences: momotaro,
+      'A boy who came out from a giant peach found in a river, decided to help his parents and village by fighting the evil Oni with the help of his animal friends.',
+    passages: [
+      'むかし、 むかし、 ある ところ に おじいさん と おばあさん が いました。',
+      'おじいさん が やま へ き を きり に いけば、 おばあさん は かわ へ せんたく に でかけます。',
+      '「おじいさん、 はよう もどってきなされ。」',
+      'おばあさん も き を つけて な。」',
+      'まいにち やさしく いい あって でかけます。',
+    ],
+    genre: ['0', '1'],
   },
 ];
 

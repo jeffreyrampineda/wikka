@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 /**
  * @param {Array<Story>} stories
@@ -10,7 +10,7 @@ function StoriesList({ stories, fetchStories }) {
     fetchStories();
   }, []);
 
-  let storiesView = "";
+  let storiesView = '';
 
   if (stories === null) {
     storiesView = (
@@ -49,9 +49,10 @@ function StoriesList({ stories, fetchStories }) {
           <div className="stories__list">
             {stories.map((story) => (
               <Link
+                key={story._id}
                 to={`/stories/${story._id}`}
                 className="stories__list--item hover-grow-1"
-                style={{ textDecoration: "none" }}
+                style={{ textDecoration: 'none' }}
               >
                 <div className="stories__list--image"></div>
                 <h3 className="stories__list--title">{story.title}</h3>
