@@ -63,6 +63,6 @@ const stories_mock = [
   },
 ];
 
-module.exports = {
+export {
   stories_mock,
 };

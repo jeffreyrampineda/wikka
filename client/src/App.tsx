@@ -1,8 +1,7 @@
 import './styles/main.scss';
 
 import React, { useReducer } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router';
 import { getStories, getStoryById } from './services/story.services';
 import Home from './views/Home';
 import Stories from './views/Stories';
@@ -131,7 +130,7 @@ function App() {
   };
 
   return (
-    <Router>
+    <BrowserRouter>
       <main>
         <Routes>
           <Route index element={<Home />} />
@@ -153,7 +152,7 @@ function App() {
           <Route path="/about" element={<About />} />
         </Routes>
       </main>
-    </Router>
+    </BrowserRouter>
   );
 }
 

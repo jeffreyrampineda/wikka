@@ -1,11 +1,10 @@
-import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link } from 'react-router';
 
 function NavBar() {
   return (
     <header>
       <nav className="navbar container">
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link to="/" style={{ textDecoration: 'none' }}>
           <span className="navbar--brand">Wikka</span>
         </Link>
         <ul className="navbar__nav">
@@ -13,7 +12,7 @@ function NavBar() {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                "navbar__nav--link" + (isActive ? " active" : "")
+                'navbar__nav--link' + (isActive ? ' active' : '')
               }
             >
               Home
@@ -23,7 +22,7 @@ function NavBar() {
             <NavLink
               to="/stories"
               className={({ isActive }) =>
-                "navbar__nav--link" + (isActive ? " active" : "")
+                'navbar__nav--link' + (isActive ? ' active' : '')
               }
             >
               Stories
@@ -33,7 +32,7 @@ function NavBar() {
             <NavLink
               to="/about"
               className={({ isActive }) =>
-                "navbar__nav--link" + (isActive ? " active" : "")
+                'navbar__nav--link' + (isActive ? ' active' : '')
               }
             >
               About
@@ -43,7 +42,7 @@ function NavBar() {
             <NavLink
               to="/contact"
               className={({ isActive }) =>
-                "navbar__nav--link" + (isActive ? " active" : "")
+                'navbar__nav--link' + (isActive ? ' active' : '')
               }
             >
               Contact

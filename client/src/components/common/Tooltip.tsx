@@ -1,7 +1,13 @@
-import React from "react";
-import "./Tooltip.css";
+import React from 'react';
+import './Tooltip.css';
 
-function Tooltip({ children, message }) {
+function Tooltip({
+  children,
+  message,
+}: {
+  children: React.ReactNode;
+  message: string;
+}) {
   return (
     <span className="w-tooltip">
       {children}

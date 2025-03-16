@@ -5,7 +5,7 @@ export function getStories() {
   return stories_mock;
 }
 
-export function getStoryById(id) {
+export function getStoryById(id: string) {
   // Mock getStoryById.
   return stories_mock.find((story) => story._id == id);
 }

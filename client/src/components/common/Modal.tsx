@@ -1,14 +1,22 @@
-import React from "react";
-import "./Modal.css";
+import React from 'react';
+import './Modal.css';
 
-function Modal({ children, isModalActive, close }) {
+function Modal({
+  children,
+  isModalActive,
+  onClose,
+}: {
+  children: React.ReactNode;
+  isModalActive: boolean;
+  onClose: () => void;
+}) {
   return (
     <div
       className="modal"
-      style={{ display: isModalActive ? "block" : "none" }}
+      style={{ display: isModalActive ? 'block' : 'none' }}
       onClick={() => {
         // close modal when outside of modal is clicked
-        close();
+        onClose();
       }}
     >
       <div

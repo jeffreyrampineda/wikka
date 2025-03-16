@@ -1,5 +1,4 @@
 import React from "react";
-import "./Sentence.css";
 import Tooltip from "../common/Tooltip";
 
 /**

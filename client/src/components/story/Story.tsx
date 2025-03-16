@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
-import "./Story.css";
+import { useParams, Link } from "react-router";
 import Card from "../common/Card";
 import Modal from "../common/Modal";
 import Button from "../common/Button";
@@ -79,7 +78,7 @@ function Story({ selectedStory, fetchStoryById }) {
       ></FormContainer>
       <Modal
         isModalActive={isModalActive}
-        close={() => {
+        onClose={() => {
           setIsModalActive(false);
         }}
       >

@@ -1,5 +1,4 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import Button from "./common/Button";
 import hero_banner_type_writer from "../assets/images/hero_banner_type_writer.jpg";
 import undraw_reading_time from "../assets/images/undraw_reading_time.svg";
