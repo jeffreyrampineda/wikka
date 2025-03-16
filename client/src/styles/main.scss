@@ -1,14 +1,15 @@
-@import "./resets";
-@import "./variables";
-@import "./common";
-@import "./mixins";
+@use './resets';
+@use './variables';
+@use './common';
+@use './mixins';
+@use 'sass:color';
 
 body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
-    "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
+    'Noto Sans', 'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
-  color: $text-color-dark;
+  color: variables.$text-color-dark;
 }
 
 footer {
@@ -19,12 +20,12 @@ footer {
 .navbar {
   display: flex;
   flex-direction: row;
-  background-color: $bg-color-primary;
+  background-color: variables.$bg-color-primary;
   padding-top: 32px;
   padding-bottom: 32px;
 
   &--brand {
-    color: $text-color-light;
+    color: variables.$text-color-light;
   }
 
   &__nav {
@@ -40,30 +41,30 @@ footer {
 
     &--link {
       text-decoration: none;
-      color: darken($text-color-light, 10%);
+      color: color.scale(variables.$text-color-light, $lightness: -10%);
       padding: 1rem;
 
       &:hover {
-        color: $text-color-light;
+        color: variables.$text-color-light;
       }
     }
 
     .active {
       font-weight: 500;
-      color: $text-color-light;
+      color: variables.$text-color-light;
     }
   }
 }
 
 .hero {
-  background-color: $bg-color-primary-soft;
+  background-color: variables.$bg-color-primary-soft;
   padding-top: 16px;
   padding-bottom: 16px;
-  @include tablet {
+  @include mixins.tablet {
     padding-top: 32px;
     padding-bottom: 32px;
   }
-  @include desktop {
+  @include mixins.desktop {
     padding-top: 64px;
     padding-bottom: 64px;
   }
@@ -71,23 +72,23 @@ footer {
   &__content {
     display: flex;
     flex-direction: column;
-    @include desktop {
+    @include mixins.desktop {
       flex-direction: row;
     }
 
     &__intro {
       width: 100%;
-      @include desktop {
+      @include mixins.desktop {
         width: 40%;
       }
 
       &--heading {
         font-size: 2.5rem;
         font-weight: 300;
-        @include tablet {
+        @include mixins.tablet {
           font-size: 3rem;
         }
-        @include desktop {
+        @include mixins.desktop {
           font-size: 3.5rem;
           line-height: 1.2;
         }
@@ -97,7 +98,7 @@ footer {
         font-size: 1.25rem;
         font-weight: 300;
         line-height: 1.5;
-        color: lighten($text-color-dark, 50%);
+        color: color.scale(variables.$text-color-dark, $lightness: 50%);
         padding-top: 48px;
         padding-bottom: 48px;
       }
@@ -107,14 +108,14 @@ footer {
           display: flex;
           flex-direction: column;
           gap: 16px;
-          @include tablet {
+          @include mixins.tablet {
             flex-direction: row;
           }
         }
 
         &--button {
           width: 100%;
-          @include tablet {
+          @include mixins.tablet {
             width: initial;
           }
         }
@@ -124,7 +125,7 @@ footer {
     &__banner {
       display: none;
       width: 100%;
-      @include desktop {
+      @include mixins.desktop {
         display: block;
         width: 60%;
       }
@@ -141,10 +142,10 @@ footer {
   flex-direction: column;
   gap: 32px;
   padding: 16px;
-  @include tablet {
+  @include mixins.tablet {
     padding: 32px;
   }
-  @include desktop {
+  @include mixins.desktop {
     padding: 64px 256px 64px 256px;
   }
 
@@ -155,7 +156,7 @@ footer {
 
     &__intro {
       width: 100%;
-      @include desktop {
+      @include mixins.desktop {
         display: block;
         width: 60%;
       }
@@ -170,7 +171,7 @@ footer {
     &__banner {
       display: none;
       width: 100%;
-      @include desktop {
+      @include mixins.desktop {
         display: block;
         width: 40%;
       }
@@ -206,7 +207,7 @@ footer {
       &--link {
         display: block;
         text-decoration: none;
-        color: $text-color-dark;
+        color: variables.$text-color-dark;
         border-radius: 8px;
         width: 100%;
         padding: 1.25em 4em;
@@ -214,7 +215,7 @@ footer {
 
       .active {
         font-weight: 500;
-        background-color: $bg-color-primary-soft;
+        background-color: variables.$bg-color-primary-soft;
       }
     }
   }
@@ -247,21 +248,21 @@ footer {
 
     &--image {
       height: 20rem;
-      background-color: $bg-color-light-grey;
-      box-shadow: 5px 10px 30px $bg-color-light-grey;
+      background-color: variables.$bg-color-light-grey;
+      box-shadow: 5px 10px 30px variables.$bg-color-light-grey;
     }
 
     &--title {
       font-size: 1.5rem;
       font-weight: 300;
       line-height: 1.5;
-      color: $text-color-dark;
+      color: variables.$text-color-dark;
       padding-top: 24px;
     }
 
     &--author {
       font-size: 1rem;
-      color: lighten($text-color-dark, 50%);
+      color: color.scale(variables.$text-color-dark, $lightness: 50%);
     }
   }
 }
@@ -271,7 +272,7 @@ footer {
   flex-direction: column;
   gap: 32px;
   max-width: 1080px;
-  box-shadow: 5px 10px 30px $bg-color-light-grey;
+  box-shadow: 5px 10px 30px variables.$bg-color-light-grey;
   margin-left: auto;
   margin-right: auto;
   padding: 32px;
@@ -304,10 +305,10 @@ footer {
         &:after {
           position: absolute;
           top: -20px;
-          content: " ";
+          content: ' ';
           height: 40px;
           width: 2px;
-          background-color: $text-color-dark;
+          background-color: variables.$text-color-dark;
         }
         &:before {
           transform: rotate(45deg);
@@ -322,7 +323,7 @@ footer {
   &--title {
     font-size: 2.5rem;
     font-weight: 300;
-    color: $text-color-dark;
+    color: variables.$text-color-dark;
   }
 }
 
@@ -335,7 +336,7 @@ footer {
   &__actions {
     display: flex;
     flex-direction: column;
-    @include tablet {
+    @include mixins.tablet {
       flex-direction: row;
       justify-content: space-between;
       align-items: baseline;
@@ -348,7 +349,7 @@ footer {
   flex-direction: column;
   gap: 32px;
   max-width: 1080px;
-  box-shadow: 5px 10px 30px $bg-color-light-grey;
+  box-shadow: 5px 10px 30px variables.$bg-color-light-grey;
   margin-left: auto;
   margin-right: auto;
   padding: 32px;

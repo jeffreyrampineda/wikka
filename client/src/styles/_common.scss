@@ -1,5 +1,6 @@
-@import "./margins";
-@import "./mixins";
+@use "./variables";
+@use "./margins";
+@use "./mixins";
 
 .text-center {
   text-align: center;
@@ -8,11 +9,11 @@
 .container {
   padding-left: 16px;
   padding-right: 16px;
-  @include tablet {
+  @include mixins.tablet {
     padding-left: 32px;
     padding-right: 32px;
   }
-  @include desktop {
+  @include mixins.desktop {
     padding-left: 96px;
     padding-right: 96px;
   }
@@ -27,13 +28,13 @@
   cursor: pointer;
 
   &--primary {
-    background-color: $bg-color-primary;
-    color: $text-color-light;
+    background-color: variables.$bg-color-primary;
+    color: variables.$text-color-light;
   }
 
   &--secondary {
-    background-color: $bg-color-secondary;
-    color: $text-color-light;
+    background-color: variables.$bg-color-secondary;
+    color: variables.$text-color-light;
   }
 
   &--disabled {
@@ -59,13 +60,13 @@
 }
 
 .correct {
-  background-color: $text-color-correct;
+  background-color: variables.$text-color-correct;
 }
 
 .current {
-  background-color: $text-color-current;
+  background-color: variables.$text-color-current;
 }
 
 .incorrect {
-  background-color: $text-color-incorrect;
+  background-color: variables.$text-color-incorrect;
 }
