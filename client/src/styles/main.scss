@@ -249,6 +249,7 @@ footer {
     &--image {
       height: 20rem;
       background-color: variables.$bg-color-light-grey;
+      border: 1px solid variables.$color-grey;
       box-shadow: 5px 10px 30px variables.$bg-color-light-grey;
     }
 

@@ -54,7 +54,15 @@ function StoriesList({ stories, fetchStories }) {
                 className="stories__list--item hover-grow-1"
                 style={{ textDecoration: 'none' }}
               >
-                <div className="stories__list--image"></div>
+                {story.cover_image ? (
+                  <img
+                    src={story.cover_image}
+                    alt="My Image"
+                    className="stories__list--image"
+                  />
+                ) : (
+                  <div className="stories__list--image"></div>
+                )}
                 <h3 className="stories__list--title">{story.title}</h3>
                 <p className="stories__list--author">By {story.author.name}</p>
               </Link>

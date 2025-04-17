@@ -19,6 +19,7 @@ const stories_mock = [
   {
     _id: '0',
     title: 'The Hiragana',
+    cover_image: '/cover_the_hiragana.jpg',
     author: authors_mock[0],
     description:
       'This is a simple collection of random words created to test different reading rules.',
