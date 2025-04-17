@@ -1,11 +1,16 @@
-import React from "react";
-import Tooltip from "../common/Tooltip";
+import Tooltip from '../common/Tooltip';
 
 /**
  * @param {Array<char>} sentence
  * @param {number} currentIndexChar
  */
-function Sentence({ sentence, currentIndexChar }) {
+function Sentence({
+  sentence,
+  currentIndexChar,
+}: {
+  sentence: { character: string; translation: string | undefined }[];
+  currentIndexChar: number;
+}) {
   return (
     <p className="form__sentence">
       {sentence.map((mc, i) => {
@@ -15,10 +20,10 @@ function Sentence({ sentence, currentIndexChar }) {
               <span
                 className={`${
                   i < currentIndexChar
-                    ? "correct"
+                    ? 'correct'
                     : i === currentIndexChar
-                    ? "current"
-                    : "incorrect"
+                    ? 'current'
+                    : 'incorrect'
                 }`}
               >
                 {mc.character}

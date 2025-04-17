@@ -1,10 +1,19 @@
-import React from "react";
-import Story from "../components/story/Story";
+import StoryComponent from '../components/story/StoryComponent';
+import { Story } from '../types';
 
-function StoryDetail({ selectedStory, fetchStoryById }) {
+function StoryDetail({
+  selectedStory,
+  fetchStoryById,
+}: {
+  selectedStory: Story | undefined;
+  fetchStoryById: (id: string) => void;
+}) {
   return (
     <div className="container">
-      <Story selectedStory={selectedStory} fetchStoryById={fetchStoryById} />
+      <StoryComponent
+        selectedStory={selectedStory}
+        fetchStoryById={fetchStoryById}
+      />
     </div>
   );
 }

@@ -1,10 +1,10 @@
-import { HIRAGANA_ROMAJI } from "./characterMappings";
+import { HIRAGANA_ROMAJI } from './characterMappings';
 
 // Used for Hiragana digraphs: "きゃ" -> "kya".
-const SOKUON = { ゃ: true, ゅ: true, ょ: true };
+const SOKUON: { [char: string]: true } = { ゃ: true, ゅ: true, ょ: true };
 
 // Used for double consonant: "っと" -> "tto".
-const SOKUON_TSU = "っ";
+const SOKUON_TSU = 'っ';
 
 /**
  * A sokuon is for digraphs. This function preprocesses by checking
@@ -17,11 +17,14 @@ const SOKUON_TSU = "っ";
  * @param {string} nextChar
  * @returns result { input<string>, isSokuonTsu<bool>, isSokuonReg<bool> }
  */
-function checkSokuon(char: string, nextChar: string) {
+function checkSokuon(
+  char: string,
+  nextChar: string,
+): { isSokuonTsu: boolean; isSokuonReg: boolean; input: string } {
   const result = {
     isSokuonTsu: char === SOKUON_TSU,
-    isSokuonReg: SOKUON[nextChar],
-    input: char === SOKUON_TSU ? nextChar : char
+    isSokuonReg: Boolean(SOKUON[nextChar]),
+    input: char === SOKUON_TSU ? nextChar : char,
   };
   //result.input = result.isSokuonTsu ? nextChar : char;
   return result;
@@ -54,7 +57,7 @@ export function translate(char: string, nextChar: string): string {
  * @returns Array<{character, translation}>
  */
 export function generateTranslation(sentence: string) {
-  return sentence.split("").map((char, i) => {
+  return sentence.split('').map((char, i) => {
     return {
       character: char,
       translation: translate(char, sentence[i + 1]),

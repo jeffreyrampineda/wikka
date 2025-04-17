@@ -1,16 +1,23 @@
-import React, { useEffect } from 'react';
+import { JSX, useEffect } from 'react';
 import { Link } from 'react-router';
+import { Story } from '../types';
 
 /**
  * @param {Array<Story>} stories
  * @param {function} fetchStories
  */
-function StoriesList({ stories, fetchStories }) {
+function StoriesList({
+  stories,
+  fetchStories,
+}: {
+  stories: Story[];
+  fetchStories: () => void;
+}) {
   useEffect(() => {
     fetchStories();
-  }, []);
+  }, [fetchStories]);
 
-  let storiesView = '';
+  let storiesView: JSX.Element | null = null;
 
   if (stories === null) {
     storiesView = (
@@ -30,15 +37,13 @@ function StoriesList({ stories, fetchStories }) {
         <section className="stories__menu">
           <ul className="stories__menu__nav">
             <li className="stories__menu__nav--item">
-              <Link className="stories__menu__nav--link active">
-                New Releases
-              </Link>
+              <p className="stories__menu__nav--link active">New Releases</p>
             </li>
             <li className="stories__menu__nav--item">
-              <Link className="stories__menu__nav--link">Favourites</Link>
+              <p className="stories__menu__nav--link">Favourites</p>
             </li>
             <li className="stories__menu__nav--item">
-              <Link className="stories__menu__nav--link">Recommendation</Link>
+              <p className="stories__menu__nav--link">Recommendation</p>
             </li>
           </ul>
         </section>
@@ -47,7 +52,7 @@ function StoriesList({ stories, fetchStories }) {
             <h2 className="stories__main--heading">New Releases</h2>
           </div>
           <div className="stories__list">
-            {stories.map((story) => (
+            {stories.map((story: Story) => (
               <Link
                 key={story._id}
                 to={`/stories/${story._id}`}

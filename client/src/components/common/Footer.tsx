@@ -2,7 +2,9 @@ function Footer() {
   return (
     <footer className="text-center">
       <small>
-        <p>This is a demo project. Created to practice SASS and React.</p>
+        <p>
+          This is a demo project. Created to practice SASS, React, and Japanese.
+        </p>
         <a
           href="https://github.com/jeffreyrampineda/wikka"
           target="_blank"

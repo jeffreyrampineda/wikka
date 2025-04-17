@@ -1,19 +1,26 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useParams, Link } from "react-router";
-import Card from "../common/Card";
-import Modal from "../common/Modal";
-import Button from "../common/Button";
-import Complete from "./Complete";
-import FormContainer from "./FormContainer";
+import { useState, useRef, useEffect } from 'react';
+import { useParams, Link } from 'react-router';
+import Card from '../common/Card';
+import Modal from '../common/Modal';
+import Button from '../common/Button';
+import Complete from './Complete';
+import FormContainer from './FormContainer';
+import { Story } from '../../types';
 
-let timerRef;
+let timerRef: ReturnType<typeof setInterval>;
 
 /**
  * @param {Story} selectedStory
  * @param {function} fetchStoryById
  */
-function Story({ selectedStory, fetchStoryById }) {
-  const { id } = useParams();
+function StoryComponent({
+  selectedStory,
+  fetchStoryById,
+}: {
+  selectedStory: Story | undefined;
+  fetchStoryById: (id: string) => void;
+}) {
+  const { id = '' } = useParams();
   const skipped = useRef(0);
   const duration = useRef(0);
   const [isComplete, setIsComplete] = useState(false);
@@ -27,7 +34,7 @@ function Story({ selectedStory, fetchStoryById }) {
     }, 1000);
 
     return () => clearInterval(timerRef);
-  }, []);
+  }, [fetchStoryById, id]);
 
   // Increments skipped by 1.
   const addSkipped = () => {
@@ -98,4 +105,4 @@ function Story({ selectedStory, fetchStoryById }) {
   );
 }
 
-export default Story;
+export default StoryComponent;

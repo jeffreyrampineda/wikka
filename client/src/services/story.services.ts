@@ -1,11 +1,14 @@
 import { stories_mock } from '../helpers/stories.mock';
+import { Story } from '../types';
 
-export function getStories() {
+export function getStories(): Story[] {
   // Mock getStories.
   return stories_mock;
 }
 
-export function getStoryById(id: string) {
+export function getStoryById(id: string): Story | undefined {
   // Mock getStoryById.
-  return stories_mock.find((story) => story._id == id);
+  const story = stories_mock.find((story) => story._id == id);
+
+  return story;
 }

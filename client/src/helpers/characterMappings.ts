@@ -1,4 +1,4 @@
-export const HIRAGANA_ROMAJI = {
+export const HIRAGANA_ROMAJI: { [char: string]: string } = {
     // Basic
     "あ": "a", "い": "i", "う": "u", "え": "e", "お": "o", "ん": "n", 
     "か": "ka", "き": "ki", "く": "ku", "け": "ke", "こ": "ko", 

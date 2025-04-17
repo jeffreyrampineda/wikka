@@ -1,9 +1,16 @@
-import React from "react";
-import NavBar from "../components/common/NavBar";
-import StoriesList from "../components/StoriesList";
-import Footer from "../components/common/Footer";
+import React from 'react';
+import NavBar from '../components/common/NavBar';
+import StoriesList from '../components/StoriesList';
+import Footer from '../components/common/Footer';
+import { Story } from '../types';
 
-function Stories({ stories, fetchStories }) {
+function Stories({
+  stories,
+  fetchStories,
+}: {
+  stories: Story[];
+  fetchStories: () => void;
+}) {
   return (
     <React.Fragment>
       <NavBar></NavBar>

@@ -1,24 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-const inputBoxStyle = {
-  fontSize: "2em",
-  resize: "none",
-  width: "100%",
+const inputBoxStyle: React.CSSProperties = {
+  fontSize: '2em',
+  resize: 'none',
+  width: '100%',
 };
 
 /**
  * @param {char} translation
  * @param {function} nextChar
  */
-function InputBox({ translation, nextChar }) {
-  const [userInput, setUserInput] = useState("");
+function InputBox({
+  translation,
+  nextChar,
+}: {
+  translation: string;
+  nextChar: () => void;
+}) {
+  const [userInput, setUserInput] = useState('');
 
   // Reset userInput if translation is updated.
   useEffect(() => {
-    setUserInput("");
+    setUserInput('');
   }, [translation]);
 
-  const handleOnChange = (e) => {
+  const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     e.preventDefault();
 
     const value = e.target.value.trim();
@@ -27,7 +33,7 @@ function InputBox({ translation, nextChar }) {
 
     // Compare translation with user input.
     if (translation && translation === value) {
-      setUserInput("");
+      setUserInput('');
       nextChar();
     }
   };
@@ -37,8 +43,8 @@ function InputBox({ translation, nextChar }) {
       className="my-1"
       style={inputBoxStyle}
       id="userInput"
-      rows="3"
-      cols="30"
+      rows={3}
+      cols={30}
       placeholder="Type in Romaji"
       value={userInput}
       onChange={handleOnChange}

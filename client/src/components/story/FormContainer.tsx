@@ -1,20 +1,28 @@
-import React, { useState, useEffect } from "react";
-import { generateTranslation } from "../../helpers/translator";
-import Button from "../common/Button";
-import Sentence from "./Sentence";
-import InputBox from "./InputBox";
+import React, { useState, useEffect } from 'react';
+import { generateTranslation } from '../../helpers/translator';
+import Button from '../common/Button';
+import Sentence from './Sentence';
+import InputBox from './InputBox';
 
 /**
  * @param {Array<string>} sentences
  * @param {function} addSkipped
  * @param {function} gotoComplete
  */
-function FormContainer({ sentences, addSkipped, gotoComplete }) {
+function FormContainer({
+  sentences,
+  addSkipped,
+  gotoComplete,
+}: {
+  sentences: string[];
+  addSkipped: () => void;
+  gotoComplete: () => void;
+}) {
   const [currentIndexSentence, setCurrenctIndexSentence] = useState(0);
   const [currentIndexChar, setCurrenctIndexChar] = useState(0);
   const [canNextSentence, setCanNextSentence] = useState(false);
   const [sentence, setSentence] = useState(() =>
-    generateTranslation(sentences[0])
+    generateTranslation(sentences[0]),
   );
 
   useEffect(() => {
@@ -25,13 +33,21 @@ function FormContainer({ sentences, addSkipped, gotoComplete }) {
   const isLastSentence = () => currentIndexSentence + 1 >= sentences.length;
 
   // Change to <Complete /> component for summary.
-  const handleOnComplete = (event) => {
+  const handleOnComplete = (
+    event:
+      | React.MouseEvent<HTMLButtonElement>
+      | React.FormEvent<HTMLFormElement>,
+  ) => {
     event.preventDefault();
     gotoComplete();
   };
 
   // Updates which sentence is currently active & resets canNextSentence.
-  const handleNextSentence = (event) => {
+  const handleNextSentence = (
+    event:
+      | React.MouseEvent<HTMLButtonElement>
+      | React.FormEvent<HTMLFormElement>,
+  ) => {
     event.preventDefault();
     const _nextIndexSentence = currentIndexSentence + 1;
 
@@ -43,7 +59,7 @@ function FormContainer({ sentences, addSkipped, gotoComplete }) {
   };
 
   // Skip to the next available sentence or complete the story.
-  const handleOnSkipped = (event) => {
+  const handleOnSkipped = (event: React.MouseEvent<HTMLButtonElement>) => {
     // Increment skipped by 1.
     addSkipped();
 
@@ -94,8 +110,8 @@ function FormContainer({ sentences, addSkipped, gotoComplete }) {
         <p>
           Page: {currentIndexSentence + 1}/{sentences.length}
         </p>
-        <Button wClass="btn--primary" disabled={!canNextSentence} type="submit">
-          {isLastSentence() ? "Complete" : "Next"}
+        <Button wClass="btn--primary" disabled={!canNextSentence}>
+          {isLastSentence() ? 'Complete' : 'Next'}
         </Button>
       </div>
     </form>

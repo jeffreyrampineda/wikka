@@ -1,4 +1,6 @@
-const authors_mock = [
+import { Author, Story } from '../types';
+
+const authors_mock: Author[] = [
   {
     _id: '0',
     first_name: 'Jeffrey Ram',
@@ -15,7 +17,7 @@ const authors_mock = [
   },
 ];
 
-const stories_mock = [
+const stories_mock: Story[] = [
   {
     _id: '0',
     title: 'The Hiragana',
@@ -64,6 +66,4 @@ const stories_mock = [
   },
 ];
 
-export {
-  stories_mock,
-};
+export { stories_mock };
