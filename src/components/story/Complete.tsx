@@ -72,7 +72,7 @@ function Complete({
         <img src={grade_img_src} style={{ height: '8em', width: '8em' }} />
       </ul>
       <hr />
-      <Link to="/">
+      <Link to="/stories">
         <Button wClass="btn--primary">Close</Button>
       </Link>
     </section>
