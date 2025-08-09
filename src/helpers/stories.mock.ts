@@ -15,6 +15,13 @@ const authors_mock: Author[] = [
     name: 'Crunchy Nihongo',
     lifespan: ' - ',
   },
+  {
+    _id: '2',
+    first_name: 'Simon',
+    last_name: 'Leung',
+    name: 'Simon Leung',
+    lifespan: ' - ',
+  },
 ];
 
 const stories_mock: Story[] = [
@@ -66,6 +73,25 @@ const stories_mock: Story[] = [
       'まいにち やさしく いい あって でかけます。',
     ],
     genre: ['0', '1'],
+  },
+  {
+    _id: '3',
+    title: "Moon's Friend",
+    author: authors_mock[2],
+    description:
+      'A gentle story about a little fox who becomes friends with the moon and sings and dances together in the forest at night.',
+    passages: [
+      'むかしむかし、ひろい もりの なかに ちいさな きつねが すんでいました。',
+      'きつねの なまえは こまる。まいにち もりで かけまわって あそんでいました。',
+      'ある よる、やわらかい ひかりが もりを てらし、つきが こまるに ことばを かけました。「いっしょに あそぼう」',
+      'こまるは びっくりして こえを だしましたが、すぐに にっこりして ついていきました。',
+      'つきは きらきらの ひかりで みちを つくり、ふたりは うたを うたって おどりました。',
+      'よるが あけるまえ、つきは そっと ほほえんで さよならを いいます。こまるは すこし さみしく なりました。',
+      'でも こまるは しりました。つきは いつも そらで みまもっていて、また あいに きてくれることを。',
+      'それから こまるは まいばん つきに おはなしをして、つきも そっと ひかりを あたえました。',
+      'おしまい。',
+    ],
+    genre: [],
   },
 ];
 
